@@ -35,5 +35,8 @@
 **/Builds
 **/Release
 
+# Visual Studio Code
+.vscode
+
 # Mac specific
 *.ds_store
