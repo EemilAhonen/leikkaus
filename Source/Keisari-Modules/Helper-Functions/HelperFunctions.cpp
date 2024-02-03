@@ -19,3 +19,8 @@ const float max(const float a, const float b)
 {
     return (a < b) ? b : a;
 }
+
+const float min(const float a, const float b)
+{
+    return (b < a) ? b : a;
+}

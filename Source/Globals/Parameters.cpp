@@ -23,7 +23,7 @@ void Parameters::initParameters()
   _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{inputID, 1}, inputName, -24.0, 24.0, 0.0));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{outputID, 1}, outputName, -24.0, 24.0, 0.0));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{ceilingID, 1}, ceilingName, -24.0, 0.0, 0.0));
-  _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{kneeID, 1}, kneeName, 0.0, 24.0, 0.0));
+  _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{kneeID, 1}, kneeName, 0.0, 100.0, 0.0));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{mixID, 1}, mixName, 0.0, 100.0, 100.0));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{compensationID, 1}, compensationName, false));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{oversamplingID, 1}, oversamplingName, false));

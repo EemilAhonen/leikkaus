@@ -13,3 +13,5 @@
 const float clamp(const float value, const float minValue, const float maxValue);
 
 const float max(const float a, const float b);
+
+const float min(const float a, const float b);

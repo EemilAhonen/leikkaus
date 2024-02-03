@@ -13,6 +13,28 @@
 
 //==============================================================================
 
+float hardClipWithKnee(float sample, float ceiling, float knee)
+{
+  float clippedValue;
+  if (sample > ceiling)
+  {
+    // Apply knee for a smooth transition
+    float excess = sample - ceiling;
+    clippedValue = ceiling + (excess * (knee / 100));
+  }
+  else if (sample < -ceiling)
+  {
+    // Apply knee for a smooth transition
+    float excess = -sample - ceiling;
+    clippedValue = -(ceiling + (excess * (knee / 100)));
+  }
+  else
+  {
+    clippedValue = sample;
+  }
+  return clippedValue;
+}
+
 void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce::MidiBuffer &midiMessages)
 {
   // Clear any output channels that didn't contain input data
@@ -34,14 +56,9 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
       // Add input gain
       processedSample *= juce::Decibels::decibelsToGain(_inputValue.getNextValue());
 
-      // Add oversampling
-      // TODO
-
       // Add clipping
-      // TODO
-
-      // Add downsampling
-      // TODO
+      float ceilingGain = juce::Decibels::decibelsToGain(_ceilingValue.getNextValue());
+      processedSample = hardClipWithKnee(processedSample, ceilingGain, _kneeValue.getNextValue());
 
       // Add input compensation
       if (_compensationValue)
