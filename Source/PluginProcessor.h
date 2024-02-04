@@ -70,26 +70,30 @@ public:
     void clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer);
 
 private:
-    //== Parameters =================================================================
+    //== Parameters ================================================================
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     void parameterChanged(const juce::String &parameterID, float newValue) override;
     void addParameterListeners();
 
-    //== Values ====================================================================
+    //== Modules ===================================================================
+
+    juce::dsp::Oversampling<float> _oversamplingModule{2, 2, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR};
+
+    //== Parameters ================================================================
     // User sample rate
     float _lastSampleRate;
 
     // Setting the smoothing parameter for ramping value transitions in audio processing
-    const double _smoothingParameter = 0.001;
+    const double _smoothingParameter = 0.2;
 
     // Values for user modifiable parameters
-    juce::SmoothedValue<float> _inputValue;   //-24db to 24db
-    juce::SmoothedValue<float> _outputValue;  //-24db to 24db
-    juce::SmoothedValue<float> _ceilingValue; // 0 to -24d
-    juce::SmoothedValue<float> _kneeValue;    // 0 to 24db
-    juce::SmoothedValue<float> _mixValue;     // 0 to 100%
+    juce::SmoothedValue<float> _inputValue;   //-24db to 24db normalized to gain
+    juce::SmoothedValue<float> _outputValue;  //-24db to 24db normalized to gain
+    juce::SmoothedValue<float> _ceilingValue; // 0 to -24d normalized to gain
+    juce::SmoothedValue<float> _kneeValue;    // 0 to 100% normalized to 0 to 1
+    juce::SmoothedValue<float> _mixValue;     // 0 to 100% normalized to 0 to 1
 
     bool _compensationValue = false;
     bool _oversamplingValue = false;

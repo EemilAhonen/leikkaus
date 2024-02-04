@@ -24,6 +24,10 @@ void LeikkausAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBloc
   _kneeValue.reset(_lastSampleRate, _smoothingParameter);
   _mixValue.reset(_lastSampleRate, _smoothingParameter);
 
+  // Reset and initialize oversampling module processing with the given samples per block
+  _oversamplingModule.reset();
+  _oversamplingModule.initProcessing(samplesPerBlock);
+
   // Update all parameter values
   parameterChanged(juce::String(), 0.0f);
 }
