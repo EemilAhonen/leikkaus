@@ -31,12 +31,6 @@
         <FILE id="GM6aeB" name="FillKnob.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.cpp"/>
         <FILE id="So4zPh" name="FillKnob.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.h"/>
       </GROUP>
-      <GROUP id="{32BE3AE6-B1FD-60EB-D10E-8D531D739B02}" name="Helper-Functions">
-        <FILE id="jTW3p1" name="HelperFunctions.cpp" compile="1" resource="0"
-              file="Source/Keisari-Modules/Helper-Functions/HelperFunctions.cpp"/>
-        <FILE id="ipwlZX" name="HelperFunctions.h" compile="0" resource="0"
-              file="Source/Keisari-Modules/Helper-Functions/HelperFunctions.h"/>
-      </GROUP>
     </GROUP>
     <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
       <FILE id="iESjXT" name="Globals.cpp" compile="1" resource="0" file="Source/Globals/Globals.cpp"/>
