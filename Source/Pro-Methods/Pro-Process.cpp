@@ -9,31 +9,27 @@
 */
 
 #include "../PluginProcessor.h"
+#include "../Keisari-Modules/DSP/Distortion.h"
 
 //==============================================================================
 
 /**
- * Clips the input sample with a smooth transition (knee) around the specified ceiling.
+ * Clears any unused output channels in the given audio buffer.
  *
- * @param sample The input sample to be clipped.
- * @param ceiling The threshold for positive and negative clipping.
- * @param knee The factor determining the smoothness of the transition.
- * @return The clipped value with a smooth transition.
+ * This method is used to ensure that any output channels beyond the last used input
+ * channel are set to zero, preventing potential artifacts from unused channels.
+ *
+ * @param buffer The audio buffer to clear unused output channels.
  */
-float clipWithKnee(const float sample, const float ceiling, const float knee)
+void LeikkausAudioProcessor::clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer)
 {
-  if (sample > ceiling)
-  {
-    // Clip above the threshold with 'knee' for a gradual transition.
-    return ceiling + (sample - ceiling) * knee;
-  }
-  else if (sample < -ceiling)
-  {
-    // Clip below the threshold with 'knee' for a gradual transition.
-    return -(ceiling + (-sample - ceiling) * knee);
-  }
-  // No clipping needed
-  return sample;
+  // Get the total number of input and output channels
+  int totalNumInputChannels = getTotalNumInputChannels();
+  int totalNumOutputChannels = getTotalNumOutputChannels();
+
+  // Clear any unused output channels
+  for (int i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+    buffer.clear(i, 0, buffer.getNumSamples());
 }
 
 /**

@@ -28,8 +28,6 @@ public:
     bool isBusesLayoutSupported(const BusesLayout &layouts) const override;
 #endif
 
-    void processBlock(juce::AudioBuffer<float> &, juce::MidiBuffer &) override;
-
     //==============================================================================
     juce::AudioProcessorEditor *createEditor() override;
     bool hasEditor() const override;
@@ -72,6 +70,8 @@ public:
     float _height = 0.0f;
 
     //== Processing ================================================================
+
+    void processBlock(juce::AudioBuffer<float> &, juce::MidiBuffer &) override;
     void clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer);
 
 private:

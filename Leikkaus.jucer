@@ -21,6 +21,10 @@
       <FILE id="P5gceR" name="Pro-State.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-State.cpp"/>
     </GROUP>
     <GROUP id="{3E7B6F8C-79EA-4D26-D530-62656DCD0752}" name="Keisari-Modules">
+      <GROUP id="{A4277BBE-5C69-B7C3-4ED0-97092CF61A47}" name="DSP">
+        <FILE id="scphlE" name="Distortion.cpp" compile="1" resource="0" file="Source/Keisari-Modules/DSP/Distortion.cpp"/>
+        <FILE id="t4gfPw" name="Distortion.h" compile="0" resource="0" file="Source/Keisari-Modules/DSP/Distortion.h"/>
+      </GROUP>
       <GROUP id="{710568E2-5C12-F2EE-9F43-A898181A3777}" name="UI-Components">
         <FILE id="YCE8Js" name="SliderComponent.cpp" compile="1" resource="0"
               file="Source/Keisari-Modules/UI-Components/SliderComponent.cpp"/>
