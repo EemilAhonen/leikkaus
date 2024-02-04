@@ -14,8 +14,7 @@
 #include "Keisari-Modules/LookAndFeel/FillKnob.h"
 
 //==============================================================================
-/**
- */
+
 class LeikkausAudioProcessorEditor : public juce::AudioProcessorEditor
 {
 public:

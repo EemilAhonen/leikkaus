@@ -21,7 +21,7 @@ public:
     ~LeikkausAudioProcessor() override;
 
     //==============================================================================
-    void prepareToPlay(double sampleRate, int samplesPerBlock) override;
+    void prepareToPlay(double sampleRate, int maximumExpectedSamplesPerBlock) override;
     void releaseResources() override;
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -53,9 +53,13 @@ public:
     void getStateInformation(juce::MemoryBlock &destData) override;
     void setStateInformation(const void *data, int sizeInBytes) override;
 
+    // Parameters object for managing plugin parameters
     Parameters _parameters;
+
+    // State manager for plugin parameter tree
     juce::AudioProcessorValueTreeState _treeState;
 
+    // ValueTree to store additional variables, such as width and height
     juce::ValueTree _valueTree{"Variables", {}, {{"Group", {{"name", "variables"}}, {
                                                                                         {"Parameter", {{"id", "width"}, {"value", 0.0}}},
                                                                                         {"Parameter", {{"id", "width"}, {"value", 0.0}}},
@@ -63,6 +67,7 @@ public:
 
                                                 }}};
 
+    // Additional variables for width and height
     float _width = 0.0f;
     float _height = 0.0f;
 
@@ -94,7 +99,6 @@ private:
     juce::SmoothedValue<float> _ceilingValue; // 0 to -24d normalized to gain
     juce::SmoothedValue<float> _kneeValue;    // 0 to 100% normalized to 0 to 1
     juce::SmoothedValue<float> _mixValue;     // 0 to 100% normalized to 0 to 1
-
     bool _compensationValue = false;
     bool _oversamplingValue = false;
     bool _deltaValue = false;

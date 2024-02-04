@@ -56,12 +56,15 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
 
   // Initialize an AudioBlock using the audio buffer
   juce::dsp::AudioBlock<float> block{buffer};
+
+  // Declare an empty AudioBlock for potential oversampled processing
   juce::dsp::AudioBlock<float> upSampledBlock;
 
   // Determine if oversampling is enabled
   const bool oversamplingEnabled = _oversamplingValue;
 
-  // Reference for processingBlock initialized to the original block
+  // Reference for processingBlock initialized to the original block by default
+  // If oversampling is enabled, processingBlock references upSampledBlock
   juce::dsp::AudioBlock<float> &processingBlock = (oversamplingEnabled) ? upSampledBlock : block;
 
   // Apply oversampling processing if enabled
@@ -71,11 +74,13 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
     upSampledBlock = _oversamplingModule.processSamplesUp(block);
   }
 
-  // Process block
+  // Process each channel in the audio block
   for (int channel = 0; channel < processingBlock.getNumChannels(); ++channel)
   {
+    // Obtain a pointer to the audio data for the current channel
     auto *channelData = processingBlock.getChannelPointer(channel);
 
+    // Iterate through each sample in the current channel
     for (int sample = 0; sample < processingBlock.getNumSamples(); ++sample)
     {
       // Get original sample
@@ -87,7 +92,8 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
       // Add clipping with knee
       processedSample = clipWithKnee(processedSample, _ceilingValue.getNextValue(), _kneeValue.getNextValue());
 
-      // Add input compensation
+      // Apply input compensation if enabled
+      // If _compensationValue is true, invert the effect of the input gain on the processed sample
       if (_compensationValue)
       {
         processedSample /= _inputValue.getNextValue();
@@ -96,17 +102,20 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
       // Add output gain
       processedSample *= _outputValue.getNextValue();
 
-      // Add delta
+      // Apply delta if enabled
+      // If _deltaValue is true, add the negation of the original signal to the processed sample
+      // This effectively outputs the difference between the new and original signal
       if (_deltaValue)
       {
         processedSample += originalSample * -1.0f;
       }
 
-      // Add mix
+      // Apply mixing with the original signal based on the mix factor
+      // The mix factor _mixValue controls the blending between the original and the processed sample
       float mixFactor = _mixValue.getNextValue();
       processedSample = (1.0f - mixFactor) * originalSample + mixFactor * processedSample;
 
-      // Update channel data with the processed sample
+      // Replace the channel data with the processed sample
       channelData[sample] = processedSample;
     }
   }

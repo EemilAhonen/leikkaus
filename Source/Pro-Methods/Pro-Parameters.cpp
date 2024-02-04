@@ -13,6 +13,12 @@
 
 //==============================================================================
 
+/**
+ * @brief Adds parameter listeners to the AudioProcessorValueTreeState.
+ *
+ * This function adds parameter listeners for the parameters in the AudioProcessorValueTreeState.
+ * Note: Consider refactoring to a more efficient approach.
+ */
 void LeikkausAudioProcessor::addParameterListeners()
 {
     // TODO: Invent better way to do this, without using the UIComponent vector
@@ -26,8 +32,17 @@ void LeikkausAudioProcessor::addParameterListeners()
     _treeState.addParameterListener(deltaID, this);
 }
 
+/**
+ * @brief Creates the parameter layout for the AudioProcessorValueTreeState.
+ *
+ * This function constructs the parameter layout for the AudioProcessorValueTreeState by
+ * retrieving the audio parameters from the Parameters object associated with the processor.
+ *
+ * @return A ParameterLayout containing the audio parameters for the ValueTreeState.
+ */
 juce::AudioProcessorValueTreeState::ParameterLayout LeikkausAudioProcessor::createParameterLayout()
 {
+    // Retrieve the audio parameters from the Parameters object and create the parameter layout
     return {_parameters.getAudioParameters().begin(), _parameters.getAudioParameters().end()};
 }
 
