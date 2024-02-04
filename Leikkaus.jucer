@@ -7,46 +7,55 @@
               pluginManufacturerCode="Keis" pluginCode="Klks" pluginVST3Category="Distortion"
               pluginAAXCategory="8192" lv2Uri="https://eemilahonen.github.io/plugins/leikkaus">
   <MAINGROUP id="jCxjP9" name="Leikkaus">
-    <GROUP id="{04F7F74C-9CAD-C919-661D-43AEF2AEDF7D}" name="UI-Methods">
-      <FILE id="JwjRQB" name="UI-Constructor.cpp" compile="1" resource="0"
-            file="Source/UI-Methods/UI-Constructor.cpp"/>
-      <FILE id="wgmiAZ" name="UI-Paint.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Paint.cpp"/>
-      <FILE id="x2UF8i" name="UI-Resized.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Resized.cpp"/>
-    </GROUP>
-    <GROUP id="{89DAE962-C9CA-660B-0DD8-31BD0785B052}" name="Pro-Methods">
-      <FILE id="rQGUzt" name="Pro-Parameters.cpp" compile="1" resource="0"
-            file="Source/Pro-Methods/Pro-Parameters.cpp"/>
-      <FILE id="oUjm2T" name="Pro-Prepare.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-Prepare.cpp"/>
-      <FILE id="kOrSua" name="Pro-Process.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-Process.cpp"/>
-      <FILE id="P5gceR" name="Pro-State.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-State.cpp"/>
-    </GROUP>
-    <GROUP id="{3E7B6F8C-79EA-4D26-D530-62656DCD0752}" name="Keisari-Modules">
-      <GROUP id="{A4277BBE-5C69-B7C3-4ED0-97092CF61A47}" name="DSP">
-        <FILE id="scphlE" name="Distortion.cpp" compile="1" resource="0" file="Source/Keisari-Modules/DSP/Distortion.cpp"/>
-        <FILE id="t4gfPw" name="Distortion.h" compile="0" resource="0" file="Source/Keisari-Modules/DSP/Distortion.h"/>
+    <GROUP id="{B8C33643-72D0-45A4-A722-54DAF9DC358C}" name="Assets">
+      <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons"/>
+      <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
+        <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
+        <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
+        <FILE id="D1Y3fy" name="Menu_Overlay.png" compile="0" resource="1"
+              file="Assets/Images/Menu_Overlay.png"/>
       </GROUP>
-      <GROUP id="{710568E2-5C12-F2EE-9F43-A898181A3777}" name="UI-Components">
-        <FILE id="YCE8Js" name="SliderComponent.cpp" compile="1" resource="0"
-              file="Source/Keisari-Modules/UI-Components/SliderComponent.cpp"/>
-        <FILE id="AsGyOu" name="SliderComponent.h" compile="0" resource="0"
-              file="Source/Keisari-Modules/UI-Components/SliderComponent.h"/>
-      </GROUP>
-      <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
-        <FILE id="GM6aeB" name="FillKnob.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.cpp"/>
-        <FILE id="So4zPh" name="FillKnob.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.h"/>
-      </GROUP>
-    </GROUP>
-    <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
-      <FILE id="iESjXT" name="Globals.cpp" compile="1" resource="0" file="Source/Globals/Globals.cpp"/>
-      <FILE id="fjwsUc" name="Globals.h" compile="0" resource="0" file="Source/Globals/Globals.h"/>
-      <FILE id="qgWTw6" name="Parameters.cpp" compile="1" resource="0" file="Source/Globals/Parameters.cpp"/>
-      <FILE id="NdqWj8" name="Parameters.h" compile="0" resource="0" file="Source/Globals/Parameters.h"/>
     </GROUP>
     <GROUP id="{6AF9D099-4045-3799-20E9-714570F43B92}" name="Source">
+      <GROUP id="{3E7B6F8C-79EA-4D26-D530-62656DCD0752}" name="Keisari-Modules">
+        <GROUP id="{A4277BBE-5C69-B7C3-4ED0-97092CF61A47}" name="DSP">
+          <FILE id="scphlE" name="Distortion.cpp" compile="1" resource="0" file="Source/Keisari-Modules/DSP/Distortion.cpp"/>
+          <FILE id="t4gfPw" name="Distortion.h" compile="0" resource="0" file="Source/Keisari-Modules/DSP/Distortion.h"/>
+        </GROUP>
+        <GROUP id="{710568E2-5C12-F2EE-9F43-A898181A3777}" name="UI-Components">
+          <FILE id="YCE8Js" name="SliderComponent.cpp" compile="1" resource="0"
+                file="Source/Keisari-Modules/UI-Components/SliderComponent.cpp"/>
+          <FILE id="AsGyOu" name="SliderComponent.h" compile="0" resource="0"
+                file="Source/Keisari-Modules/UI-Components/SliderComponent.h"/>
+        </GROUP>
+        <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
+          <FILE id="GM6aeB" name="FillKnob.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.cpp"/>
+          <FILE id="So4zPh" name="FillKnob.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.h"/>
+        </GROUP>
+      </GROUP>
+      <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
+        <FILE id="iESjXT" name="Globals.cpp" compile="1" resource="0" file="Source/Globals/Globals.cpp"/>
+        <FILE id="fjwsUc" name="Globals.h" compile="0" resource="0" file="Source/Globals/Globals.h"/>
+        <FILE id="qgWTw6" name="Parameters.cpp" compile="1" resource="0" file="Source/Globals/Parameters.cpp"/>
+        <FILE id="NdqWj8" name="Parameters.h" compile="0" resource="0" file="Source/Globals/Parameters.h"/>
+      </GROUP>
+      <GROUP id="{89DAE962-C9CA-660B-0DD8-31BD0785B052}" name="Pro-Methods">
+        <FILE id="rQGUzt" name="Pro-Parameters.cpp" compile="1" resource="0"
+              file="Source/Pro-Methods/Pro-Parameters.cpp"/>
+        <FILE id="oUjm2T" name="Pro-Prepare.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-Prepare.cpp"/>
+        <FILE id="kOrSua" name="Pro-Process.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-Process.cpp"/>
+        <FILE id="P5gceR" name="Pro-State.cpp" compile="1" resource="0" file="Source/Pro-Methods/Pro-State.cpp"/>
+      </GROUP>
       <FILE id="V0Poyi" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="V8U9KF" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
+      <GROUP id="{04F7F74C-9CAD-C919-661D-43AEF2AEDF7D}" name="UI-Methods">
+        <FILE id="JwjRQB" name="UI-Constructor.cpp" compile="1" resource="0"
+              file="Source/UI-Methods/UI-Constructor.cpp"/>
+        <FILE id="wgmiAZ" name="UI-Paint.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Paint.cpp"/>
+        <FILE id="x2UF8i" name="UI-Resized.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Resized.cpp"/>
+      </GROUP>
       <FILE id="ryfNiR" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="dHHxWk" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
