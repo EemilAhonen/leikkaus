@@ -4,13 +4,19 @@ A dynamic clipper effect plugin.
 <br>
 Leikkaus is compatible with both Windows and MacOS (Intel/Apple Silicon). Available as a VST3 and AU plugin.
 
-## User Interface
+## User Interface (Work in progress)
+
+![User Interface](Docs/UI_Progression.png)
 
 ## Download
+
+Coming soon...
 
 ## Credits
 
 - Lead Developer & Graphics - [Keisari](https://github.com/EemilAhonen)
+- Plugin name - [Outobugi](https://github.com/outobugi)
+- Feature and UI layout ideas from - [Turbo](https://www.youtube.com/@TurboA)
 
 ## Special Thanks
 
