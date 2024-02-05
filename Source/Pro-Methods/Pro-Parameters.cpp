@@ -21,7 +21,6 @@
  */
 void LeikkausAudioProcessor::addParameterListeners()
 {
-    // TODO: Invent better way to do this, without using the UIComponent vector
     _treeState.addParameterListener(inputID, this);
     _treeState.addParameterListener(outputID, this);
     _treeState.addParameterListener(ceilingID, this);
@@ -58,7 +57,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout LeikkausAudioProcessor::crea
 void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, float newValue)
 {
     // Do as many parameter calculations as possible here, doing them in the process block is not a good idea
-
     // TODO: There has to be a better way to do this, right?
     // Unordered map or hashcode switch-cases are more CPU expensive than this.
     if (parameterId == inputID)

@@ -17,24 +17,11 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
   juce::Slider &slider = sliderComponent->getSlider();
 
   addAndMakeVisible(slider);
-  slider.setTextBoxStyle(juce::Slider::NoTextBox, true, 0, 0);
+  slider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 40);
   slider.setDoubleClickReturnValue(true, sliderComponent->_initValue);
   slider.setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
-
-  // Add look and feels here
-  switch (sliderComponent->_lookAndFeelID)
-  {
-  case 0:
-    slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-    slider.setLookAndFeel(&_fillKnob);
-    break;
-
-    // Add more cases if needed
-
-  default:
-    // Handle unknown lookAndFeelID
-    break;
-  }
+  slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+  slider.setLookAndFeel(&_fillKnob);
 
   // Add slider attachment
   _sliderAttachments.push_back(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, sliderComponent->_id, slider));
@@ -43,16 +30,16 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
 void LeikkausAudioProcessorEditor::uiConstructor()
 {
   // Create sliders
-  // for (auto& sliderComponent : audioProcessor._parameters.getSliderComponents())
-  //{
-  //   createSlider(sliderComponent);
-  //}
+  for (auto &sliderComponent : audioProcessor._parameters.getSliderComponents())
+  {
+    createSlider(sliderComponent);
+  }
 
   // Set editor size
   setSize(audioProcessor._width == 0.0 ? INIT_WIDTH : audioProcessor._width, audioProcessor._height);
 
   // Set resizable and constraints
   setResizable(true, true);
-  getConstrainer()->setFixedAspectRatio(2.0);
+  getConstrainer()->setFixedAspectRatio(1.5);
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT, MAX_WIDTH, MAX_HEIGHT);
 }

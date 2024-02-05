@@ -21,37 +21,31 @@ public:
   LeikkausAudioProcessorEditor(LeikkausAudioProcessor &);
   ~LeikkausAudioProcessorEditor() override;
 
-  //==============================================================================
-  void paint(juce::Graphics &) override;
-  void resized() override;
-
 private:
   // This reference is provided as a quick way for your editor to
   // access the processor object that created it.
   LeikkausAudioProcessor &audioProcessor;
 
-  //== UI Functions ==============================================================
+  //== UI Methods ================================================================
   void uiConstructor();
-  void uiPaint(juce::Graphics &g);
-  void uiResized();
+  void paint(juce::Graphics &) override;
+  void resized() override;
+  void savePluginBounds();
 
   void createSlider(std::unique_ptr<SliderComponent> &sliderComponent);
 
   //== Window Size ===============================================================
-
   const int INIT_WIDTH = 750;
-  const int INIT_HEIGHT = 375;
+  const int INIT_HEIGHT = 500;
 
   const int MIN_WIDTH = 500;
-  const int MIN_HEIGHT = 250;
+  const int MIN_HEIGHT = 333;
 
-  const int MAX_HEIGHT = 1500;
+  const int MAX_HEIGHT = 2000;
   const int MAX_WIDTH = 3000;
 
-  void savePluginBounds();
-
   //== Widgets ===================================================================
-  FillKnob _fillKnob;
+  FillKnob _fillKnob{juce::Colour(static_cast<juce::uint8>(255), 100, 255, 0.5f)};
 
   //== Slider Attachments ========================================================
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> _sliderAttachments;

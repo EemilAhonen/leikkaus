@@ -18,7 +18,7 @@
 class SliderComponent
 {
 public:
-  SliderComponent(const juce::String id, const juce::String name, const float minValue, const float maxValue, const float initValue, const float interval, const float x, const float y, const float width, const float height, int lookAndFeelID)
+  SliderComponent(const juce::String id, const juce::String name, const float minValue, const float maxValue, const float initValue, const float interval, const int x, const int y, const int width, const int height, int lookAndFeelID)
       : _id(id), _name(name), _minValue(minValue), _maxValue(maxValue), _initValue(initValue), _interval(interval), _x(x), _y(y), _width(width), _height(height), _lookAndFeelID(lookAndFeelID)
   {
   }
@@ -35,10 +35,10 @@ public:
   const float _initValue;
   const float _interval;
 
-  const float _x;
-  const float _y;
-  const float _width;
-  const float _height;
+  const int _x;
+  const int _y;
+  const int _width;
+  const int _height;
 
   const int _lookAndFeelID;
 

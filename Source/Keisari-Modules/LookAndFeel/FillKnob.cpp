@@ -12,68 +12,78 @@
 
 //==============================================================================
 
-FillKnob::FillKnob()
+/**
+ * @brief Overrides the SliderLayout to center text inside a FillKnob Slider.
+ *
+ * Given a juce::Slider reference, calculates and returns the SliderLayout to ensure
+ * the associated FillKnob's text is centered. It adjusts the textBoxBounds and maintains
+ * the original sliderBounds.
+ *
+ * @param slider A reference to the juce::Slider associated with the FillKnob.
+ * @return The SliderLayout with updated textBoxBounds for centered text.
+ */
+juce::Slider::SliderLayout FillKnob::getSliderLayout(juce::Slider &slider)
 {
+  auto localBounds = slider.getLocalBounds().toFloat();
+  juce::Slider::SliderLayout layout;
+  auto textBounds = localBounds.withSizeKeepingCentre(localBounds.getWidth(),
+                                                      localBounds.getHeight() * 0.25f);
+  layout.textBoxBounds = textBounds.toNearestInt();
+  layout.sliderBounds = slider.getLocalBounds();
+  return layout;
 }
 
-void FillKnob::setParams(juce::Image knobImage)
+/**
+ * @brief Creates and configures a TextLabel and TextEditor for the FillKnob Slider.
+ *
+ * Creates a FillKnobLabel with a specified font size and sets various properties
+ * such as editability, justification, and colors. Returns a pointer to the created label.
+ *
+ * @param slider A reference to the juce::Slider associated with the FillKnob.
+ * @return A pointer to the created FillKnobLabel.
+ */
+juce::Label *FillKnob::createSliderTextBox(juce::Slider &)
 {
-    _knobImage = knobImage;
+  auto *l = new FillKnobLabel(0.75f);
+
+  // TODO: Change this later so that the dial below is interactable
+  l->setEditable(false, true, true);
+  l->setJustificationType(juce::Justification::centred);
+  l->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
+  l->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
+  l->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
+  l->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
+  l->setInterceptsMouseClicks(true, true);
+  return l;
 }
 
+/**
+ * @brief Draws the FillKnob Slider with a filled circle based on slider position.
+ *
+ * Given graphics context and dimensions, draws the FillKnob Slider with a filled
+ * circle representing the slider position. The fill color is specified by _fillColor.
+ *
+ * @param g The graphics context to draw on.
+ * @param x The x-coordinate of the slider.
+ * @param y The y-coordinate of the slider.
+ * @param width The width of the slider.
+ * @param height The height of the slider.
+ * @param sliderPosition The position of the slider.
+ * @param rotaryStartAngle The start angle of the rotary slider.
+ * @param rotaryEndAngle The end angle of the rotary slider.
+ * @param slider A reference to the juce::Slider associated with the FillKnob.
+ */
 void FillKnob::drawRotarySlider(juce::Graphics &g, int x, int y, int width, int height, float sliderPosition, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider &slider)
 {
-    auto bounds = juce::Rectangle<int>(x, y, width, height).toFloat().reduced(10);
-    float diameter = juce::jmin(width, height);
-    float radius = diameter / 2;
-    float angle = rotaryStartAngle + (sliderPosition * (rotaryEndAngle - rotaryStartAngle));
-    auto center = bounds.getCentre();
+  // Calculate the vertical position to fill the circle based on the slider position.
+  float fillY = height * (1.0f - sliderPosition);
 
-    // Draw knob image if it's set
-    if (!_knobImage.isNull())
-    {
-        // Calculate the transformation for the knob image
-        auto transform = juce::AffineTransform::scale(diameter * _innerScale / _knobImage.getHeight()).translated(center.x - radius * _innerScale, center.y - radius * _innerScale).rotated(angle, center.x, center.y);
-        g.drawImageTransformed(_knobImage, transform, false);
-    }
+  // Create a circular clipping path to restrict drawing within the specified circle.
+  juce::Path clipPath;
+  clipPath.addEllipse(x, y, width, height);
+  g.reduceClipRegion(clipPath);
 
-    // Calculate outline properties
-    float outlineW = radius * (1 - _innerScale);
-    float outlineOffset = radius * _outlineWidth;
-
-    // Function to draw an arc
-    auto drawArc = [&g, &bounds, &rotaryStartAngle, &rotaryEndAngle](const juce::Colour &color, float lineWidth, float innerRadius, float outerRadius)
-    {
-        juce::Path arc;
-        arc.addCentredArc(bounds.getCentreX(), bounds.getCentreY(), outerRadius, outerRadius, 0.0f, rotaryStartAngle, rotaryEndAngle, true);
-
-        g.setColour(color);
-        g.strokePath(arc, juce::PathStrokeType(lineWidth, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-    };
-
-    // Draw the outline arc
-    drawArc(_outlineColor, outlineW, radius, radius - outlineW * 0.5f);
-
-    // Calculate line width and arc radius for background arc
-    float lineW = outlineW - outlineOffset * 2;
-    float arcRadius = radius - lineW * 0.5f - outlineOffset;
-
-    // Draw the background arc
-    drawArc(_backgroundColor, lineW, arcRadius, arcRadius);
-
-    // Draw the value arc if the slider is enabled
-    if (slider.isEnabled())
-    {
-        juce::Path fillArc;
-        fillArc.addCentredArc(bounds.getCentreX(), bounds.getCentreY(), arcRadius, arcRadius, 0.0f, rotaryStartAngle, angle, true);
-
-        g.setColour(_fillColor);
-        g.strokePath(fillArc, juce::PathStrokeType(lineW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-    }
-
-    // Calculate thumb position and draw the thumb
-    juce::Point<float> thumbPoint(center.x + arcRadius * std::cos(angle - juce::MathConstants<float>::halfPi), center.y + arcRadius * std::sin(angle - juce::MathConstants<float>::halfPi));
-
-    g.setColour(_thumbColor);
-    g.fillEllipse(juce::Rectangle<float>(outlineW, outlineW).withCentre(thumbPoint));
+  // Fill the rectangle within the circular boundary with the specified color.
+  g.setColour(_fillColor);
+  g.fillRect(static_cast<int>(x), static_cast<int>(fillY), static_cast<int>(width), static_cast<int>(height));
 }

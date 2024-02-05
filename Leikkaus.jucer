@@ -14,6 +14,7 @@
         <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
         <FILE id="D1Y3fy" name="Menu_Overlay.png" compile="0" resource="1"
               file="Assets/Images/Menu_Overlay.png"/>
+        <FILE id="Vxa1JE" name="UI_Concept.png" compile="0" resource="1" file="Assets/Images/UI_Concept.png"/>
       </GROUP>
     </GROUP>
     <GROUP id="{6AF9D099-4045-3799-20E9-714570F43B92}" name="Source">
@@ -31,6 +32,9 @@
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
           <FILE id="GM6aeB" name="FillKnob.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.cpp"/>
           <FILE id="So4zPh" name="FillKnob.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.h"/>
+          <FILE id="FddBKH" name="FillKnobLabel.cpp" compile="1" resource="0"
+                file="Source/Keisari-Modules/LookAndFeel/FillKnobLabel.cpp"/>
+          <FILE id="gpadMU" name="FillKnobLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnobLabel.h"/>
         </GROUP>
       </GROUP>
       <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
@@ -55,6 +59,7 @@
               file="Source/UI-Methods/UI-Constructor.cpp"/>
         <FILE id="wgmiAZ" name="UI-Paint.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Paint.cpp"/>
         <FILE id="x2UF8i" name="UI-Resized.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Resized.cpp"/>
+        <FILE id="ESKPUf" name="UI-Save.cpp" compile="1" resource="0" file="Source/UI-Methods/UI-Save.cpp"/>
       </GROUP>
       <FILE id="ryfNiR" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>

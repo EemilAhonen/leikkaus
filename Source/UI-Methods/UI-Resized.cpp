@@ -12,7 +12,7 @@
 
 //==============================================================================
 
-void LeikkausAudioProcessorEditor::uiResized()
+void LeikkausAudioProcessorEditor::resized()
 {
   // The size of the window where I copied the coordinates from
   float windowSizeForCoordinates = 3000.0f;
@@ -20,11 +20,12 @@ void LeikkausAudioProcessorEditor::uiResized()
   float scaleFactor = getWidth() / windowSizeForCoordinates;
 
   // Scale UI components
-  // for (auto& sliderComponentPtr : audioProcessor._parameters.getSliderComponents())
-  //{
-  //    SliderComponent& sliderComponent = *sliderComponentPtr;
-  //    sliderComponent.setBounds(scaleFactor);
-  //}
+  for (auto &sliderComponentPtr : audioProcessor._parameters.getSliderComponents())
+  {
+    SliderComponent &sliderComponent = *sliderComponentPtr;
+    sliderComponent.setBounds(scaleFactor);
+  }
 
+  // Save the set bound to the treestate
   savePluginBounds();
 }

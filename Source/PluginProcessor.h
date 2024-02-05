@@ -70,20 +70,17 @@ public:
     float _height = 0.0f;
 
     //== Processing ================================================================
-
     void processBlock(juce::AudioBuffer<float> &, juce::MidiBuffer &) override;
     void clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer);
 
 private:
     //== Parameters ================================================================
-
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     void parameterChanged(const juce::String &parameterID, float newValue) override;
     void addParameterListeners();
 
     //== Modules ===================================================================
-
     juce::dsp::Oversampling<float> _oversamplingModule{2, 2, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR};
 
     //== Parameters ================================================================

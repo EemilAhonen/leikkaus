@@ -10,4 +10,6 @@
 
 #pragma once
 
+//==============================================================================
+
 float clipWithKnee(const float sample, const float ceiling, const float knee);
