@@ -18,7 +18,7 @@ namespace BinaryData
     const int            Lines_pngSize = 37115;
 
     extern const char*   Menu_Overlay_png;
-    const int            Menu_Overlay_pngSize = 177925;
+    const int            Menu_Overlay_pngSize = 117981;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 4;

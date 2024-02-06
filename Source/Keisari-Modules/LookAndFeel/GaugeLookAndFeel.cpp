@@ -76,19 +76,42 @@ juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &)
  */
 void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int width, int height, float sliderPosition, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider &slider)
 {
-  auto bounds = juce::Rectangle<int>(x, y, width, height).toFloat().reduced(10);
+  auto bounds = juce::Rectangle<int>(x, y, width, height);
+
+  // Define circle colors
+  juce::Colour outerCircle = juce::Colour(100, 120, 130);
+  juce::Colour innerCircle = juce::Colour(15, 15, 20);
+  float shadowStrength = 0.65;
+  float centerOpacity = 0.85f;
+
+  // Draw the outer circle
+  g.setColour(outerCircle);
+  g.fillEllipse(x, y, width, height);
+
+  // Set the inner circle size and gradient
+  float innerCircleSize = 0.85f;
+  juce::ColourGradient innerGradient = juce::ColourGradient(innerCircle, bounds.getCentreX(), bounds.getCentreY(), juce::Colours::black, width * innerCircleSize, height * innerCircleSize, true);
+  innerGradient.addColour(shadowStrength, innerCircle);
+
+  // Draw the inner circle
+  g.setGradientFill(innerGradient);
+  g.fillEllipse(x + (width * (1.0f - innerCircleSize) * 0.5f), y + (height * (1.0f - innerCircleSize) * 0.5f), width * innerCircleSize, height * innerCircleSize);
 
   // Calculate the vertical position to fill the circle based on the slider position.
   float fillY = height * (1.0f - sliderPosition);
 
   // Create a circular clipping path to restrict drawing within the specified circle.
-  juce::Path clipPath;
-  clipPath.addEllipse(x, y, width, height);
-  g.reduceClipRegion(clipPath);
+  juce::Path clippingCircle;
+  clippingCircle.addEllipse(x, y, width, height);
+  g.reduceClipRegion(clippingCircle);
 
   // Fill the rectangle within the circular boundary with the specified color.
   g.setColour(_fillColor);
   g.fillRect(static_cast<int>(x), static_cast<int>(fillY), static_cast<int>(width), static_cast<int>(height));
+
+  innerGradient.multiplyOpacity(centerOpacity);
+  g.setGradientFill(innerGradient);
+  g.fillEllipse(x + (width * (1.0f - innerCircleSize) * 0.5f), y + (height * (1.0f - innerCircleSize) * 0.5f), width * innerCircleSize, height * innerCircleSize);
 
   // Set arrows based on hovering and clicking state
   if (_hovering)

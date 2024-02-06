@@ -16,7 +16,7 @@
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
         <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
         <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
-        <FILE id="D1Y3fy" name="Menu_Overlay.png" compile="0" resource="1"
+        <FILE id="XkRLnc" name="Menu_Overlay.png" compile="0" resource="1"
               file="Assets/Images/Menu_Overlay.png"/>
       </GROUP>
     </GROUP>
