@@ -15,12 +15,9 @@
       <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons"/>
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
         <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
-        <FILE id="JxXAuc" name="Gauge_Arrows.png" compile="0" resource="1"
-              file="Assets/Images/Gauge_Arrows.png"/>
         <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
         <FILE id="D1Y3fy" name="Menu_Overlay.png" compile="0" resource="1"
               file="Assets/Images/Menu_Overlay.png"/>
-        <FILE id="Vxa1JE" name="UI_Concept.png" compile="0" resource="1" file="Assets/Images/UI_Concept.png"/>
       </GROUP>
     </GROUP>
     <GROUP id="{6AF9D099-4045-3799-20E9-714570F43B92}" name="Source">

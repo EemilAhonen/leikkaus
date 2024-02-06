@@ -14,20 +14,14 @@ namespace BinaryData
     extern const char*   Background_png;
     const int            Background_pngSize = 38407;
 
-    extern const char*   Gauge_Arrows_png;
-    const int            Gauge_Arrows_pngSize = 2910;
-
     extern const char*   Lines_png;
     const int            Lines_pngSize = 37115;
 
     extern const char*   Menu_Overlay_png;
     const int            Menu_Overlay_pngSize = 177925;
 
-    extern const char*   UI_Concept_png;
-    const int            UI_Concept_pngSize = 384085;
-
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 6;
+    const int namedResourceListSize = 4;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
