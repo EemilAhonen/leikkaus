@@ -14,5 +14,5 @@
 
 void SliderComponent::setBounds(float scaleFactor)
 {
-  _slider.setBounds(_x * scaleFactor, _y * scaleFactor, _width * scaleFactor, _height * scaleFactor);
+  _slider.get()->setBounds(_x * scaleFactor, _y * scaleFactor, _width * scaleFactor, _height * scaleFactor);
 }

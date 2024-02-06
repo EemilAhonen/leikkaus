@@ -2,7 +2,7 @@
   ==============================================================================
 
     Gauge.h
-    Created: 5 Feb 2024 10:00:00pm
+    Created: 6 Feb 2024 1:00:00pm
     Author:  Eemil Ahonen
 
   ==============================================================================
@@ -11,26 +11,48 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "GaugeLabel.h"
+#include "GaugeLookAndFeel.h"
 
 //==============================================================================
 
-class Gauge : public juce::LookAndFeel_V4
+class Gauge : public juce::Slider
 {
 public:
-  Gauge() : _fillColor(juce::Colour(255, 255, 255)), _textSize(1.0f) {}
-  Gauge(juce::Colour fillColor, float textSize) : _fillColor(fillColor), _textSize(textSize) {}
+  Gauge()
+  {
+    gaugeLookAndFeel = std::make_unique<GaugeLookAndFeel>();
+    setLookAndFeel(gaugeLookAndFeel.get());
+  }
 
-  void setArrowImage(juce::Image arrowImage) { _arrowImage = arrowImage; }
+  ~Gauge()
+  {
+    setLookAndFeel(nullptr);
+  }
+
+  void setFillColor(juce::Colour fillColor)
+  {
+    gaugeLookAndFeel->setFillColor(fillColor);
+  }
+
+  void setFontSize(float fontSize)
+  {
+    gaugeLookAndFeel->setFontSize(fontSize);
+  }
+
+  using RightClickCallback = std::function<void()>;
+
+  void setRightClickCallback(RightClickCallback callback)
+  {
+    _rightClickCallback = callback;
+  }
 
 protected:
-  void drawRotarySlider(juce::Graphics &g, int x, int y, int width, int height, float sliderPosition, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider &slider) override;
-  juce::Slider::SliderLayout getSliderLayout(juce::Slider &slider) override;
-  juce::Label *createSliderTextBox(juce::Slider &) override;
+  void mouseDown(const juce::MouseEvent &e) override;
 
 private:
-  juce::Colour _fillColor;
-  juce::Image _arrowImage;
-    
-  const float _textSize;
+  RightClickCallback _rightClickCallback;
+
+  std::unique_ptr<GaugeLookAndFeel> gaugeLookAndFeel;
+
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Gauge)
 };

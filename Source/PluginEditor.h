@@ -11,7 +11,6 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "Keisari-Modules/UI-Components/SliderComponent.h"
-#include "Keisari-Modules/LookAndFeel/Gauge.h"
 
 //==============================================================================
 
@@ -46,7 +45,6 @@ private:
 
   //== Widgets ===================================================================
   juce::SharedResourcePointer<juce::TooltipWindow> tooltipWindow;
-  Gauge _gauge;
   //== Slider Attachments ========================================================
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> _sliderAttachments;
 

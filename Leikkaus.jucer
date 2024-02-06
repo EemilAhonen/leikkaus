@@ -36,8 +36,12 @@
                 file="Source/Keisari-Modules/UI-Components/SliderComponent.h"/>
         </GROUP>
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
-          <FILE id="GM6aeB" name="Gauge.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.cpp"/>
-          <FILE id="So4zPh" name="Gauge.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.h"/>
+          <FILE id="MHqpwt" name="Gauge.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.cpp"/>
+          <FILE id="uIi3FD" name="Gauge.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.h"/>
+          <FILE id="GM6aeB" name="GaugeLookAndFeel.cpp" compile="1" resource="0"
+                file="Source/Keisari-Modules/LookAndFeel/GaugeLookAndFeel.cpp"/>
+          <FILE id="So4zPh" name="GaugeLookAndFeel.h" compile="0" resource="0"
+                file="Source/Keisari-Modules/LookAndFeel/GaugeLookAndFeel.h"/>
           <FILE id="FddBKH" name="GaugeLabel.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.cpp"/>
           <FILE id="gpadMU" name="GaugeLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.h"/>
         </GROUP>

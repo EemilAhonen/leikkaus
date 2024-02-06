@@ -21,10 +21,15 @@ public:
   SliderComponent(const juce::String id, const juce::String name, const juce::String toolTip, const float minValue, const float maxValue, const float initValue, const float interval, const int x, const int y, const int width, const int height, int lookAndFeelID)
       : _id(id), _name(name), _toolTip(toolTip), _minValue(minValue), _maxValue(maxValue), _initValue(initValue), _interval(interval), _x(x), _y(y), _width(width), _height(height), _lookAndFeelID(lookAndFeelID)
   {
+    _slider = std::make_unique<juce::Slider>();
   }
 
   void setBounds(float ratio = 1.0f);
-  juce::Slider &getSlider() { return _slider; }
+  void setSlider(std::unique_ptr<juce::Slider> newSlider)
+  {
+    _slider = std::move(newSlider);
+  }
+  juce::Slider *getSlider() { return _slider.get(); }
 
 public:
   const juce::String _id;
@@ -44,5 +49,5 @@ public:
   const int _lookAndFeelID;
 
 private:
-  juce::Slider _slider;
+  std::unique_ptr<juce::Slider> _slider;
 };
