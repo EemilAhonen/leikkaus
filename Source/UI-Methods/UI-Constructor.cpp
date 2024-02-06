@@ -23,14 +23,16 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
   if (slider != nullptr)
   {
     addAndMakeVisible(slider);
-    slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 40);
+
+    // These values don't actually matter, as they are set in the resized() method
+    slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 400);
+
     slider->setDoubleClickReturnValue(true, sliderComponent->_initValue);
     slider->setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
     slider->setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     slider->setTooltip(sliderComponent->_toolTip);
-
     slider->setFillColor(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 0.5f));
-    slider->setFontSize(0.75f);
+    slider->setTextHeight(0.2f);
 
     slider->setRightClickCallback([this, parameterID = sliderComponent->_id]()
                                   {

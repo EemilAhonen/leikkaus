@@ -21,7 +21,7 @@ void GaugeLabel::resized()
     getCurrentTextEditor()->setBounds(getLocalBounds());
 
   juce::Font labelFont = getFont();
-  labelFont.setHeight(getHeight() * _fontSize);
+  labelFont.setHeight(getHeight());
   setFont(labelFont);
 }
 

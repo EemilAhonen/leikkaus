@@ -27,7 +27,7 @@ juce::Slider::SliderLayout GaugeLookAndFeel::getSliderLayout(juce::Slider &slide
   auto localBounds = slider.getLocalBounds().toFloat();
   juce::Slider::SliderLayout layout;
   auto textBounds = localBounds.withSizeKeepingCentre(localBounds.getWidth(),
-                                                      localBounds.getHeight() * 0.25f);
+                                                      localBounds.getHeight() * _textHeight);
   layout.textBoxBounds = textBounds.toNearestInt();
   layout.sliderBounds = slider.getLocalBounds();
   return layout;
@@ -44,17 +44,18 @@ juce::Slider::SliderLayout GaugeLookAndFeel::getSliderLayout(juce::Slider &slide
  */
 juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &)
 {
-  auto *l = new GaugeLabel(_fontSize);
+  // Dynamically allocate memory for gaugeLabel
+  auto *gaugeLabel = new GaugeLabel();
 
   // TODO: Change this later so that the dial below is interactable
-  l->setEditable(false, true, true);
-  l->setJustificationType(juce::Justification::centred);
-  l->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
-  l->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
-  l->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
-  l->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
-  l->setInterceptsMouseClicks(true, true);
-  return l;
+  gaugeLabel->setEditable(false, true, true);
+  gaugeLabel->setJustificationType(juce::Justification::centred);
+  gaugeLabel->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
+  gaugeLabel->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
+  gaugeLabel->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
+  gaugeLabel->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
+  gaugeLabel->setInterceptsMouseClicks(true, true);
+  return gaugeLabel;
 }
 
 /**
@@ -86,4 +87,6 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   // Fill the rectangle within the circular boundary with the specified color.
   g.setColour(_fillColor);
   g.fillRect(static_cast<int>(x), static_cast<int>(fillY), static_cast<int>(width), static_cast<int>(height));
+
+  // Arrows
 }

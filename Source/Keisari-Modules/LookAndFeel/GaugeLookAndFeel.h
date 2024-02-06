@@ -18,16 +18,18 @@
 class GaugeLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
-  GaugeLookAndFeel() : _fillColor(juce::Colour(255, 255, 255)), _fontSize(1.0f) {}
+  GaugeLookAndFeel()
+  {
+  }
+
+  void setTextHeight(float textHeight)
+  {
+    _textHeight = textHeight;
+  }
 
   void setFillColor(juce::Colour fillColor)
   {
     _fillColor = fillColor;
-  }
-
-  void setFontSize(float fontSize)
-  {
-    _fontSize = fontSize;
   }
 
 protected:
@@ -36,6 +38,6 @@ protected:
   juce::Label *createSliderTextBox(juce::Slider &) override;
 
 private:
-  juce::Colour _fillColor;
-  float _fontSize;
+  float _textHeight = 1.0f;
+  juce::Colour _fillColor = juce::Colour(255, 255, 255);
 };

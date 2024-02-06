@@ -34,9 +34,9 @@ public:
     gaugeLookAndFeel->setFillColor(fillColor);
   }
 
-  void setFontSize(float fontSize)
+  void setTextHeight(float textHeight)
   {
-    gaugeLookAndFeel->setFontSize(fontSize);
+    gaugeLookAndFeel->setTextHeight(textHeight);
   }
 
   using RightClickCallback = std::function<void()>;
