@@ -12,6 +12,24 @@
 
 //==============================================================================
 
+void Gauge::mouseEnter(const juce::MouseEvent &e)
+{
+  gaugeLookAndFeel->mouseEnter();
+  Slider::mouseEnter(e);
+}
+
+void Gauge::mouseExit(const juce::MouseEvent &e)
+{
+  gaugeLookAndFeel->mouseExit();
+  Slider::mouseExit(e);
+}
+
+void Gauge::mouseUp(const juce::MouseEvent &e)
+{
+  gaugeLookAndFeel->mouseUp();
+  Slider::mouseUp(e);
+}
+
 void Gauge::mouseDown(const juce::MouseEvent &e)
 {
   juce::ModifierKeys modifiers = juce::ModifierKeys::getCurrentModifiersRealtime();
@@ -26,6 +44,7 @@ void Gauge::mouseDown(const juce::MouseEvent &e)
   }
   else
   {
+    gaugeLookAndFeel->mouseDown();
     Slider::mouseDown(e);
   }
 }

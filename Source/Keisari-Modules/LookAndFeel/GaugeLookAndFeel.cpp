@@ -76,6 +76,8 @@ juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &)
  */
 void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int width, int height, float sliderPosition, const float rotaryStartAngle, const float rotaryEndAngle, juce::Slider &slider)
 {
+  auto bounds = juce::Rectangle<int>(x, y, width, height).toFloat().reduced(10);
+
   // Calculate the vertical position to fill the circle based on the slider position.
   float fillY = height * (1.0f - sliderPosition);
 
@@ -88,5 +90,41 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   g.setColour(_fillColor);
   g.fillRect(static_cast<int>(x), static_cast<int>(fillY), static_cast<int>(width), static_cast<int>(height));
 
-  // Arrows
+  // Set arrows based on hovering and clicking state
+  if (_hovering)
+  {
+    // Define arrow characteristics
+    float arrowWidth = width * 0.1f;
+    float opacityModifier = _mouseDown ? 0.5f : 0.25f;
+    float fullOpacityModifier = opacityModifier * 2;
+
+    // Calculate arrow color based on slider position and opacity modifiers
+    juce::Colour arrowColor = juce::Colour(static_cast<juce::uint8>(255), 255, 255, sliderPosition == 1.0f ? opacityModifier : fullOpacityModifier);
+
+    // Draw top arrow
+    g.setColour(arrowColor);
+    drawArrow(g, bounds.getCentreX(), bounds.getCentreY(), arrowWidth, height, true);
+
+    // Draw bottom arrow
+    g.setColour(arrowColor.withAlpha(sliderPosition == 0.0f ? opacityModifier : fullOpacityModifier));
+    drawArrow(g, bounds.getCentreX(), bounds.getCentreY(), arrowWidth, height, false);
+  }
+}
+
+void GaugeLookAndFeel::drawArrow(juce::Graphics &g, float x, float y, float width, float height, bool flip)
+{
+  // Set arrow direction based on 'flip'
+  float arrowDirection = flip ? -1.0f : 1.0f;
+
+  float arrowY = 0.2125f * height * arrowDirection;
+  float thickness = 0.025f * height;
+
+  // Create arrow path
+  juce::Path arrow;
+  arrow.startNewSubPath(x - width / 2, y + arrowY);
+  arrow.lineTo(x, y + arrowY + arrowDirection * (height * 0.05f));
+  arrow.lineTo(x + width / 2, y + arrowY);
+
+  // Stroke the arrow path
+  g.strokePath(arrow, juce::PathStrokeType(juce::PathStrokeType(thickness, juce::PathStrokeType::curved, juce::PathStrokeType::rounded)));
 }
