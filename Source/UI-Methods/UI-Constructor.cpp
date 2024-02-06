@@ -38,6 +38,7 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
       auto parameter = audioProcessor._treeState.getParameter(parameterID);
       if (parameter != nullptr)
       {
+          DBG(juce::Component::getMouseXYRelative().x);
         // Get the host context. This is null for everything else except VST3
         auto hostContext = getHostContext();
         if (hostContext != nullptr)
@@ -46,9 +47,9 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
           auto contextMenu = hostContext->getContextMenuForParameter(parameter);
           if (contextMenu != nullptr)
           {
-            // Show the native menu at the specified position (10, 20)
-            // TODO: Get the position from the mouse event
-            contextMenu->showNativeMenu(juce::Point<int>(10, 20));
+            // Show the native menu at the mouse position
+            // TODO: This value is wrong?!?
+            contextMenu->showNativeMenu(getMouseXYRelative());
           }
         }
       } });
@@ -80,6 +81,4 @@ void LeikkausAudioProcessorEditor::uiConstructor()
   setResizable(true, true);
   getConstrainer()->setFixedAspectRatio(1.5);
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT, MAX_WIDTH, MAX_HEIGHT);
-
-  // getHostContext()->getContextMenuForParameter(audioProcessor._treeState.getParameter("input"));
 }
