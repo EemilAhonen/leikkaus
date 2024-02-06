@@ -24,7 +24,7 @@ public:
 
 private:
   void initParameters();
-  void addSliderParameter(const juce::String id, const juce::String name, float minValue, float maxValue, float initValue, float interval, int decimalPlaces, int x, int y, int width, int height, int lookAndFeelID);
+  void addSliderParameter(const juce::String id, const juce::String name, const juce::String toolTip, float minValue, float maxValue, float initValue, float interval, int decimalPlaces, int x, int y, int width, int height, int lookAndFeelID);
 
   std::vector<std::unique_ptr<SliderComponent>> _sliderComponents;
   std::vector<std::unique_ptr<juce::RangedAudioParameter>> _audioParameters;
