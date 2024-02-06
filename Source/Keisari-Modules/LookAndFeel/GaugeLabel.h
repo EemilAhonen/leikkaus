@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    FillKnobLabel.h
-    Created: 6 Feb 2024 9:42:00pm
+    GaugeLabel.h
+    Created: 5 Feb 2024 10:00:00pm
     Author:  Eemil Ahonen
 
   ==============================================================================
@@ -14,14 +14,14 @@
 
 //==============================================================================
 
-class FillKnobLabel : public juce::Label
+class GaugeLabel : public juce::Label
 {
 public:
-  FillKnobLabel(float fontSize) : _fontSize(fontSize)
+    GaugeLabel(float fontSize) : _fontSize(fontSize)
   {
   }
 
-  ~FillKnobLabel()
+  ~GaugeLabel()
   {
     setLookAndFeel(nullptr);
   }
@@ -33,5 +33,5 @@ protected:
 private:
   const float _fontSize;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FillKnobLabel)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GaugeLabel)
 };

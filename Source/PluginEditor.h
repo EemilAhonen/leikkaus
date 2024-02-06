@@ -11,7 +11,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "Keisari-Modules/UI-Components/SliderComponent.h"
-#include "Keisari-Modules/LookAndFeel/FillKnob.h"
+#include "Keisari-Modules/LookAndFeel/Gauge.h"
 
 //==============================================================================
 
@@ -45,8 +45,8 @@ private:
   const int MAX_WIDTH = 3000;
 
   //== Widgets ===================================================================
-  FillKnob _fillKnob{juce::Colour(static_cast<juce::uint8>(255), 100, 255, 0.5f)};
-
+  juce::SharedResourcePointer<juce::TooltipWindow> tooltipWindow;
+  Gauge _gauge;
   //== Slider Attachments ========================================================
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> _sliderAttachments;
 

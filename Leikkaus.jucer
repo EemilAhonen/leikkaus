@@ -8,9 +8,15 @@
               pluginAAXCategory="8192" lv2Uri="https://eemilahonen.github.io/plugins/leikkaus">
   <MAINGROUP id="jCxjP9" name="Leikkaus">
     <GROUP id="{B8C33643-72D0-45A4-A722-54DAF9DC358C}" name="Assets">
+      <GROUP id="{67914C8C-F586-1824-7F8D-8A3186DDE3FF}" name="Fonts">
+        <FILE id="yidBMJ" name="Roboto-Regular.ttf" compile="0" resource="1"
+              file="Assets/Fonts/Roboto-Regular.ttf"/>
+      </GROUP>
       <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons"/>
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
         <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
+        <FILE id="JxXAuc" name="Gauge_Arrows.png" compile="0" resource="1"
+              file="Assets/Images/Gauge_Arrows.png"/>
         <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
         <FILE id="D1Y3fy" name="Menu_Overlay.png" compile="0" resource="1"
               file="Assets/Images/Menu_Overlay.png"/>
@@ -30,11 +36,10 @@
                 file="Source/Keisari-Modules/UI-Components/SliderComponent.h"/>
         </GROUP>
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
-          <FILE id="GM6aeB" name="FillKnob.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.cpp"/>
-          <FILE id="So4zPh" name="FillKnob.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnob.h"/>
-          <FILE id="FddBKH" name="FillKnobLabel.cpp" compile="1" resource="0"
-                file="Source/Keisari-Modules/LookAndFeel/FillKnobLabel.cpp"/>
-          <FILE id="gpadMU" name="FillKnobLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/FillKnobLabel.h"/>
+          <FILE id="GM6aeB" name="Gauge.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.cpp"/>
+          <FILE id="So4zPh" name="Gauge.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.h"/>
+          <FILE id="FddBKH" name="GaugeLabel.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.cpp"/>
+          <FILE id="gpadMU" name="GaugeLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.h"/>
         </GROUP>
       </GROUP>
       <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">

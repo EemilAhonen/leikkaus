@@ -21,7 +21,8 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
   slider.setDoubleClickReturnValue(true, sliderComponent->_initValue);
   slider.setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
   slider.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-  slider.setLookAndFeel(&_fillKnob);
+  slider.setTooltip(sliderComponent->_toolTip);
+  slider.setLookAndFeel(&_gauge);
 
   // Add slider attachment
   _sliderAttachments.push_back(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, sliderComponent->_id, slider));
@@ -29,6 +30,12 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
 
 void LeikkausAudioProcessorEditor::uiConstructor()
 {
+  // Set font for this editor
+  juce::LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize));
+
+  juce::Image arrowImage = juce::ImageCache::getFromMemory(BinaryData::Gauge_Arrows_png, BinaryData::Gauge_Arrows_pngSize);
+  _gauge.setArrowImage(arrowImage);
+
   // Create sliders
   for (auto &sliderComponent : audioProcessor._parameters.getSliderComponents())
   {

@@ -1,21 +1,21 @@
 /*
   ==============================================================================
 
-    FillKnobLabel.h
-    Created: 6 Feb 2024 9:42:00pm
+    GaugeLabel.h
+    Created: 5 Feb 2024 10:00:00pm
     Author:  Eemil Ahonen
 
   ==============================================================================
 */
 
-#include "FillKnobLabel.h"
+#include "GaugeLabel.h"
 
 //==============================================================================
 
 /**
  * @brief Resizes the label and adjusts font size during component resizing.
  */
-void FillKnobLabel::resized()
+void GaugeLabel::resized()
 {
   if (getCurrentTextEditor() != nullptr)
     getCurrentTextEditor()->setBounds(getLocalBounds());
@@ -29,7 +29,7 @@ void FillKnobLabel::resized()
  * @brief Sets TextEditor justification to centered when shown.
  * @param editor A pointer to the shown TextEditor.
  */
-void FillKnobLabel::editorShown(juce::TextEditor *editor)
+void GaugeLabel::editorShown(juce::TextEditor *editor)
 {
   editor->setJustification(juce::Justification::centred);
 }

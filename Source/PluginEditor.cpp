@@ -11,7 +11,7 @@
 
 //==============================================================================
 LeikkausAudioProcessorEditor::LeikkausAudioProcessorEditor(LeikkausAudioProcessor &p)
-    : AudioProcessorEditor(&p), audioProcessor(p)
+    : AudioProcessorEditor(&p), audioProcessor(p), _gauge(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 0.5f), 0.75f)
 {
     uiConstructor();
 }
