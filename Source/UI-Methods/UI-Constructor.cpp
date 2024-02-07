@@ -9,7 +9,7 @@
 */
 
 #include "../PluginEditor.h"
-#include "../Keisari-Modules/LookAndFeel/Gauge.h"
+#include "../Keisari-Modules/LookAndFeel/Gauge/Gauge.h"
 
 //==============================================================================
 

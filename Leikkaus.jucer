@@ -15,9 +15,19 @@
       <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons"/>
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
         <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
+        <FILE id="EPIE4O" name="Compensation_OFF.png" compile="0" resource="1"
+              file="Assets/Images/Compensation_OFF.png"/>
+        <FILE id="M039gg" name="Compensation_ON.png" compile="0" resource="1"
+              file="Assets/Images/Compensation_ON.png"/>
+        <FILE id="hhcJr9" name="Delta_OFF.png" compile="0" resource="1" file="Assets/Images/Delta_OFF.png"/>
+        <FILE id="O8uwI6" name="Delta_ON.png" compile="0" resource="1" file="Assets/Images/Delta_ON.png"/>
         <FILE id="fkL6dd" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
-        <FILE id="XkRLnc" name="Menu_Overlay.png" compile="0" resource="1"
+        <FILE id="sXuHtQ" name="Menu_Overlay.png" compile="0" resource="1"
               file="Assets/Images/Menu_Overlay.png"/>
+        <FILE id="wzc4Z0" name="Oversampling_OFF.png" compile="0" resource="1"
+              file="Assets/Images/Oversampling_OFF.png"/>
+        <FILE id="oZYufE" name="Oversampling_ON.png" compile="0" resource="1"
+              file="Assets/Images/Oversampling_ON.png"/>
       </GROUP>
     </GROUP>
     <GROUP id="{6AF9D099-4045-3799-20E9-714570F43B92}" name="Source">
@@ -33,14 +43,24 @@
                 file="Source/Keisari-Modules/UI-Components/SliderComponent.h"/>
         </GROUP>
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
-          <FILE id="MHqpwt" name="Gauge.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.cpp"/>
-          <FILE id="uIi3FD" name="Gauge.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge.h"/>
-          <FILE id="GM6aeB" name="GaugeLookAndFeel.cpp" compile="1" resource="0"
-                file="Source/Keisari-Modules/LookAndFeel/GaugeLookAndFeel.cpp"/>
-          <FILE id="So4zPh" name="GaugeLookAndFeel.h" compile="0" resource="0"
-                file="Source/Keisari-Modules/LookAndFeel/GaugeLookAndFeel.h"/>
-          <FILE id="FddBKH" name="GaugeLabel.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.cpp"/>
-          <FILE id="gpadMU" name="GaugeLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/GaugeLabel.h"/>
+          <GROUP id="{7CABDE54-DD49-6B11-12F6-0F19BA4DFE77}" name="ImageToggle">
+            <FILE id="oEn8bT" name="ImageToggle.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.cpp"/>
+            <FILE id="Pyn0Ny" name="ImageToggle.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.h"/>
+            <FILE id="yNUalT" name="ImageToggleLookAndFeel.cpp" compile="1" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggleLookAndFeel.cpp"/>
+            <FILE id="H6ulcN" name="ImageToggleLookAndFeel.h" compile="0" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggleLookAndFeel.h"/>
+          </GROUP>
+          <GROUP id="{D43AF80D-8046-428F-1F50-69B779254E62}" name="Gauge">
+            <FILE id="VzzPqo" name="Gauge.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge/Gauge.cpp"/>
+            <FILE id="pcJ7xu" name="Gauge.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge/Gauge.h"/>
+            <FILE id="V3aeHt" name="GaugeLabel.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge/GaugeLabel.cpp"/>
+            <FILE id="Qe7s9L" name="GaugeLabel.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/Gauge/GaugeLabel.h"/>
+            <FILE id="fa3rBE" name="GaugeLookAndFeel.cpp" compile="1" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/Gauge/GaugeLookAndFeel.cpp"/>
+            <FILE id="Pq62WZ" name="GaugeLookAndFeel.h" compile="0" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/Gauge/GaugeLookAndFeel.h"/>
+          </GROUP>
         </GROUP>
       </GROUP>
       <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
