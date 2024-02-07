@@ -10,32 +10,43 @@
 
 #include "../PluginEditor.h"
 #include "../Keisari-Modules/LookAndFeel/Gauge/Gauge.h"
+#include "../Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.h"
 
 //==============================================================================
 
+void LeikkausAudioProcessorEditor::createUIComponent(std::unique_ptr<SliderComponent> &sliderComponent)
+{
+  // Move that mess here
+}
+
 void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent> &sliderComponent)
 {
-  // Create and set Gauge slider
-  sliderComponent->setSlider(std::make_unique<Gauge>());
-
-  // Retrieve the Gauge slider
-  auto slider = dynamic_cast<Gauge *>(sliderComponent->getSlider());
-  if (slider != nullptr)
+  switch (sliderComponent->_lookAndFeelID)
   {
-    addAndMakeVisible(slider);
+  case 0:
+  {
+    // GAUGE
+    // Create and set Gauge slider
+    sliderComponent->setSlider(std::make_unique<Gauge>());
 
-    // These values don't actually matter, as they are set in the resized() method
-    slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 400);
+    // Retrieve the Gauge slider
+    auto slider = dynamic_cast<Gauge *>(sliderComponent->getSlider());
+    if (slider != nullptr)
+    {
+      addAndMakeVisible(slider);
 
-    slider->setDoubleClickReturnValue(true, sliderComponent->_initValue);
-    slider->setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
-    slider->setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-    slider->setTooltip(sliderComponent->_toolTip);
-    slider->setFillColor(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 1.0f));
-    slider->setTextHeight(0.2f);
+      // These values don't actually matter, as they are set in the resized() method
+      slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 400);
 
-    slider->setRightClickCallback([this, parameterID = sliderComponent->_id]()
-                                  {
+      slider->setDoubleClickReturnValue(true, sliderComponent->_initValue);
+      slider->setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
+      slider->setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+      slider->setTooltip(sliderComponent->_toolTip);
+      slider->setFillColor(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 1.0f));
+      slider->setTextHeight(0.2f);
+
+      slider->setRightClickCallback([this, parameterID = sliderComponent->_id]()
+                                    {
       // Get the AudioProcessorParameter using the provided parameterID
       auto parameter = audioProcessor._treeState.getParameter(parameterID);
       if (parameter != nullptr)
@@ -54,13 +65,20 @@ void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent>
           }
         }
       } });
+    }
 
     // Add slider attachment
     _sliderAttachments.push_back(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, sliderComponent->_id, *slider));
+    break;
   }
-  else
-  {
-    jassertfalse;
+
+  case 1:
+    // IMAGE TOGGLE
+    break;
+
+  default:
+    // Handle unknown lookAndFeelID
+    break;
   }
 }
 
@@ -74,6 +92,13 @@ void LeikkausAudioProcessorEditor::uiConstructor()
   {
     createSlider(sliderComponent);
   }
+
+  // Temporary UI code
+  // addAndMakeVisible(imageToggle);
+  // imageToggle.setTooltip("Toggle");
+  // juce::Image toggleOnImage = juce::ImageCache::getFromMemory(BinaryData::Compensation_ON_png, BinaryData::Compensation_ON_pngSize);
+  // juce::Image toggleOffImage = juce::ImageCache::getFromMemory(BinaryData::Compensation_OFF_png, BinaryData::Compensation_OFF_pngSize);
+  // imageToggle.setImages(toggleOnImage, toggleOffImage);
 
   // Set editor size
   setSize(audioProcessor._width == 0.0 ? INIT_WIDTH : audioProcessor._width, audioProcessor._height);

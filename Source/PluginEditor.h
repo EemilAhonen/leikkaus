@@ -31,6 +31,7 @@ private:
   void resized() override;
   void savePluginBounds();
 
+  void createUIComponent(std::unique_ptr<SliderComponent> &sliderComponent);
   void createSlider(std::unique_ptr<SliderComponent> &sliderComponent);
 
   //== Window Size ===============================================================
@@ -47,6 +48,7 @@ private:
   juce::SharedResourcePointer<juce::TooltipWindow> tooltipWindow;
   //== Slider Attachments ========================================================
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> _sliderAttachments;
+  std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>> _toggleButtonAttachments;
 
   //==============================================================================
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LeikkausAudioProcessorEditor)
