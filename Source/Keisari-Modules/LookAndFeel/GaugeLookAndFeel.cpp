@@ -81,7 +81,7 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   // Define circle colors
   juce::Colour outerCircle = juce::Colour(100, 120, 130);
   juce::Colour innerCircle = juce::Colour(15, 15, 20);
-  float shadowStrength = 0.65;
+  float shadowWeakness = 0.65f;
   float centerOpacity = 0.85f;
 
   // Draw the outer circle
@@ -91,7 +91,7 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   // Set the inner circle size and gradient
   float innerCircleSize = 0.85f;
   juce::ColourGradient innerGradient = juce::ColourGradient(innerCircle, bounds.getCentreX(), bounds.getCentreY(), juce::Colours::black, width * innerCircleSize, height * innerCircleSize, true);
-  innerGradient.addColour(shadowStrength, innerCircle);
+  innerGradient.addColour(shadowWeakness, innerCircle);
 
   // Draw the inner circle
   g.setGradientFill(innerGradient);
