@@ -9,96 +9,19 @@
 */
 
 #include "../PluginEditor.h"
-#include "../Keisari-Modules/LookAndFeel/Gauge/Gauge.h"
-#include "../Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.h"
 
 //==============================================================================
-
-void LeikkausAudioProcessorEditor::createUIComponent(std::unique_ptr<SliderComponent> &sliderComponent)
-{
-  // Move that mess here
-}
-
-void LeikkausAudioProcessorEditor::createSlider(std::unique_ptr<SliderComponent> &sliderComponent)
-{
-  switch (sliderComponent->_lookAndFeelID)
-  {
-  case 0:
-  {
-    // GAUGE
-    // Create and set Gauge slider
-    sliderComponent->setSlider(std::make_unique<Gauge>());
-
-    // Retrieve the Gauge slider
-    auto slider = dynamic_cast<Gauge *>(sliderComponent->getSlider());
-    if (slider != nullptr)
-    {
-      addAndMakeVisible(slider);
-
-      // These values don't actually matter, as they are set in the resized() method
-      slider->setTextBoxStyle(juce::Slider::TextBoxBelow, false, 400, 400);
-
-      slider->setDoubleClickReturnValue(true, sliderComponent->_initValue);
-      slider->setRange(sliderComponent->_minValue, sliderComponent->_maxValue, sliderComponent->_interval);
-      slider->setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-      slider->setTooltip(sliderComponent->_toolTip);
-      slider->setFillColor(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 1.0f));
-      slider->setTextHeight(0.2f);
-
-      slider->setRightClickCallback([this, parameterID = sliderComponent->_id]()
-                                    {
-      // Get the AudioProcessorParameter using the provided parameterID
-      auto parameter = audioProcessor._treeState.getParameter(parameterID);
-      if (parameter != nullptr)
-      {
-        // Get the host context. This is null for everything else except VST3
-        auto hostContext = getHostContext();
-        if (hostContext != nullptr)
-        {
-          // Get the context menu for the parameter
-          auto contextMenu = hostContext->getContextMenuForParameter(parameter);
-          if (contextMenu != nullptr)
-          {
-            // Show the native menu at the mouse position
-            // TODO: This value is wrong?!?
-            contextMenu->showNativeMenu(getMouseXYRelative());
-          }
-        }
-      } });
-    }
-
-    // Add slider attachment
-    _sliderAttachments.push_back(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, sliderComponent->_id, *slider));
-    break;
-  }
-
-  case 1:
-    // IMAGE TOGGLE
-    break;
-
-  default:
-    // Handle unknown lookAndFeelID
-    break;
-  }
-}
 
 void LeikkausAudioProcessorEditor::uiConstructor()
 {
   // Set font for this editor
   juce::LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize));
 
-  // Create sliders
-  for (auto &sliderComponent : audioProcessor._parameters.getSliderComponents())
+  // Create uiComponents
+  for (auto &uiComponent : audioProcessor._parameters.getUIComponents())
   {
-    createSlider(sliderComponent);
+    createUIComponent(uiComponent);
   }
-
-  // Temporary UI code
-  // addAndMakeVisible(imageToggle);
-  // imageToggle.setTooltip("Toggle");
-  // juce::Image toggleOnImage = juce::ImageCache::getFromMemory(BinaryData::Compensation_ON_png, BinaryData::Compensation_ON_pngSize);
-  // juce::Image toggleOffImage = juce::ImageCache::getFromMemory(BinaryData::Compensation_OFF_png, BinaryData::Compensation_OFF_pngSize);
-  // imageToggle.setImages(toggleOnImage, toggleOffImage);
 
   // Set editor size
   setSize(audioProcessor._width == 0.0 ? INIT_WIDTH : audioProcessor._width, audioProcessor._height);
@@ -107,4 +30,16 @@ void LeikkausAudioProcessorEditor::uiConstructor()
   setResizable(true, true);
   getConstrainer()->setFixedAspectRatio(1.5);
   setResizeLimits(MIN_WIDTH, MIN_HEIGHT, MAX_WIDTH, MAX_HEIGHT);
+}
+
+void LeikkausAudioProcessorEditor::createUIComponent(std::unique_ptr<UIComponent> &uiComponent)
+{
+  if (auto sliderComponent = dynamic_cast<SliderComponent *>(uiComponent.get()))
+  {
+    createSlider(*sliderComponent);
+  }
+  else if (auto toggleButtonComponent = dynamic_cast<ToggleButtonComponent *>(uiComponent.get()))
+  {
+    createToggleButton(*toggleButtonComponent);
+  }
 }

@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
-#include "Keisari-Modules/UI-Components/SliderComponent.h"
+#include "Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.h"
 
 //==============================================================================
 
@@ -31,8 +31,11 @@ private:
   void resized() override;
   void savePluginBounds();
 
-  void createUIComponent(std::unique_ptr<SliderComponent> &sliderComponent);
-  void createSlider(std::unique_ptr<SliderComponent> &sliderComponent);
+  void createUIComponent(std::unique_ptr<UIComponent> &uiComponent);
+  void createSlider(SliderComponent &sliderComponent);
+  void createToggleButton(ToggleButtonComponent &toggleButtonComponent);
+  void setupToggleLookAndFeel(ImageToggle &imageToggle, int lookAndFeelID);
+  void handleRightClick(juce::String parameterID);
 
   //== Window Size ===============================================================
   const int INIT_WIDTH = 750;

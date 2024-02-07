@@ -20,10 +20,10 @@ void LeikkausAudioProcessorEditor::resized()
   float scaleFactor = getWidth() / windowSizeForCoordinates;
 
   // Scale UI components
-  for (auto &sliderComponentPtr : audioProcessor._parameters.getSliderComponents())
+  for (auto &uiComponentPtr : audioProcessor._parameters.getUIComponents())
   {
-    SliderComponent &sliderComponent = *sliderComponentPtr;
-    sliderComponent.setBounds(scaleFactor);
+    UIComponent &uiComponent = *uiComponentPtr;
+    uiComponent.setBounds(scaleFactor);
   }
 
   // Save the set bound to the treestate
