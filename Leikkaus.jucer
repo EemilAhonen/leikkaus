@@ -67,6 +67,8 @@
       <GROUP id="{D34B9A8E-0E54-332A-3E60-6B7D18D194C2}" name="Globals">
         <FILE id="iESjXT" name="Globals.cpp" compile="1" resource="0" file="Source/Globals/Globals.cpp"/>
         <FILE id="fjwsUc" name="Globals.h" compile="0" resource="0" file="Source/Globals/Globals.h"/>
+        <FILE id="mi7cGM" name="Init-Parameters.cpp" compile="1" resource="0"
+              file="Source/Globals/Init-Parameters.cpp"/>
         <FILE id="qgWTw6" name="Parameters.cpp" compile="1" resource="0" file="Source/Globals/Parameters.cpp"/>
         <FILE id="NdqWj8" name="Parameters.h" compile="0" resource="0" file="Source/Globals/Parameters.h"/>
       </GROUP>
