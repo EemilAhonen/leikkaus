@@ -47,14 +47,13 @@ juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &)
   // Dynamically allocate memory for gaugeLabel
   auto *gaugeLabel = new GaugeLabel();
 
-  // TODO: Change this later so that the dial below is interactable
-  gaugeLabel->setEditable(false, true, true);
+  gaugeLabel->setEditable(false, false, true);
   gaugeLabel->setJustificationType(juce::Justification::centred);
   gaugeLabel->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
   gaugeLabel->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
   gaugeLabel->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
   gaugeLabel->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
-  gaugeLabel->setInterceptsMouseClicks(true, true);
+  gaugeLabel->setInterceptsMouseClicks(false, false);
   return gaugeLabel;
 }
 

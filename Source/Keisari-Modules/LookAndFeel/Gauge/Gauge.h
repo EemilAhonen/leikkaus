@@ -36,6 +36,7 @@ public:
 
   void setTextHeight(float textHeight)
   {
+    _textHeight = textHeight;
     gaugeLookAndFeel->setTextHeight(textHeight);
   }
 
@@ -52,7 +53,10 @@ protected:
   void mouseUp(const juce::MouseEvent &e) override;
   void mouseDown(const juce::MouseEvent &e) override;
 
+  void mouseDoubleClick(const juce::MouseEvent &) override;
+
 private:
+  float _textHeight = 1.0f;
   RightClickCallback _rightClickCallback;
 
   std::unique_ptr<GaugeLookAndFeel> gaugeLookAndFeel;
