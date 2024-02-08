@@ -32,7 +32,18 @@ void LeikkausAudioProcessorEditor::createSlider(SliderComponent &sliderComponent
         gauge->setRange(sliderComponent._minValue, sliderComponent._maxValue, sliderComponent._interval);
         gauge->setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
         gauge->setTooltip(sliderComponent._toolTip);
-        gauge->setFillColor(juce::Colour(static_cast<juce::uint8>(255), 100, 255, 1.0f));
+
+        // Set Gauge colours
+        gauge->setColour(juce::Slider::rotarySliderFillColourId, juce::Colour(static_cast<juce::uint8>(255), 100, 255, 1.0f));
+        gauge->setColour(juce::Slider::rotarySliderOutlineColourId, juce::Colour(100, 120, 130));
+        gauge->setColour(juce::Slider::trackColourId, juce::Colour(15, 15, 20));
+
+        // Set Gauge TextEditor colours
+        gauge->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
+        gauge->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
+        gauge->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
+        gauge->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
+
         gauge->setTextHeight(0.2f);
 
         gauge->setRightClickCallback([this, parameterID = sliderComponent._id]()

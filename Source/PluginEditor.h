@@ -49,6 +49,9 @@ private:
 
   //== Widgets ===================================================================
   juce::SharedResourcePointer<juce::TooltipWindow> tooltipWindow;
+  juce::ImageComponent _menuImageComponent;
+  juce::ImageComponent _overlayImageComponent;
+
   //== Slider Attachments ========================================================
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> _sliderAttachments;
   std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>> _toggleButtonAttachments;

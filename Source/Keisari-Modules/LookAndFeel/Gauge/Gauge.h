@@ -29,11 +29,6 @@ public:
     setLookAndFeel(nullptr);
   }
 
-  void setFillColor(juce::Colour fillColor)
-  {
-    gaugeLookAndFeel->setFillColor(fillColor);
-  }
-
   void setTextHeight(float textHeight)
   {
     _textHeight = textHeight;

@@ -27,11 +27,6 @@ public:
     _textHeight = textHeight;
   }
 
-  void setFillColor(juce::Colour fillColor)
-  {
-    _fillColor = fillColor;
-  }
-
   void mouseEnter()
   {
     _hovering = true;
@@ -63,5 +58,9 @@ private:
   void drawArrow(juce::Graphics &g, float x, float y, float width, float height, bool flip);
 
   float _textHeight = 1.0f;
-  juce::Colour _fillColor = juce::Colour(255, 255, 255);
+
+  // TODO: Might as well make these parameters, also the mess in the arrow drawing function
+  float shadowWeakness = 0.65f;
+  float centerOpacity = 0.85f;
+  float innerCircleSize = 0.85f;
 };

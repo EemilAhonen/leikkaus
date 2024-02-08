@@ -42,17 +42,17 @@ juce::Slider::SliderLayout GaugeLookAndFeel::getSliderLayout(juce::Slider &slide
  * @param slider A reference to the juce::Slider associated with the Gauge.
  * @return A pointer to the created GaugeLabel.
  */
-juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &)
+juce::Label *GaugeLookAndFeel::createSliderTextBox(juce::Slider &slider)
 {
   // Dynamically allocate memory for gaugeLabel
   auto *gaugeLabel = new GaugeLabel();
 
   gaugeLabel->setEditable(false, false, true);
   gaugeLabel->setJustificationType(juce::Justification::centred);
-  gaugeLabel->setColour(juce::TextEditor::backgroundColourId, juce::Colour(30, 30, 30));
-  gaugeLabel->setColour(juce::TextEditor::outlineColourId, juce::Colour(45, 133, 194));
-  gaugeLabel->setColour(juce::TextEditor::focusedOutlineColourId, juce::Colour(45, 133, 194));
-  gaugeLabel->setColour(juce::TextEditor::highlightColourId, juce::Colour(137, 87, 110));
+  gaugeLabel->setColour(juce::TextEditor::backgroundColourId, slider.findColour(juce::TextEditor::backgroundColourId));
+  gaugeLabel->setColour(juce::TextEditor::outlineColourId, slider.findColour(juce::TextEditor::outlineColourId));
+  gaugeLabel->setColour(juce::TextEditor::focusedOutlineColourId, slider.findColour(juce::TextEditor::focusedOutlineColourId));
+  gaugeLabel->setColour(juce::TextEditor::highlightColourId, slider.findColour(juce::TextEditor::highlightColourId));
   gaugeLabel->setInterceptsMouseClicks(false, false);
   return gaugeLabel;
 }
@@ -78,17 +78,15 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   auto bounds = juce::Rectangle<int>(x, y, width, height);
 
   // Define circle colors
-  juce::Colour outerCircle = juce::Colour(100, 120, 130);
-  juce::Colour innerCircle = juce::Colour(15, 15, 20);
-  float shadowWeakness = 0.65f;
-  float centerOpacity = 0.85f;
+  juce::Colour fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
+  juce::Colour outerCircle = slider.findColour(juce::Slider::rotarySliderOutlineColourId);
+  juce::Colour innerCircle = slider.findColour(juce::Slider::trackColourId);
 
   // Draw the outer circle
   g.setColour(outerCircle);
   g.fillEllipse(x, y, width, height);
 
   // Set the inner circle size and gradient
-  float innerCircleSize = 0.85f;
   juce::ColourGradient innerGradient = juce::ColourGradient(innerCircle, bounds.getCentreX(), bounds.getCentreY(), juce::Colours::black, width * innerCircleSize, height * innerCircleSize, true);
   innerGradient.addColour(shadowWeakness, innerCircle);
 
@@ -105,7 +103,7 @@ void GaugeLookAndFeel::drawRotarySlider(juce::Graphics &g, int x, int y, int wid
   g.reduceClipRegion(clippingCircle);
 
   // Fill the rectangle within the circular boundary with the specified color.
-  g.setColour(_fillColor);
+  g.setColour(fillColour);
   g.fillRect(static_cast<int>(x), static_cast<int>(fillY), static_cast<int>(width), static_cast<int>(height));
 
   innerGradient.multiplyOpacity(centerOpacity);

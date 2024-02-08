@@ -24,17 +24,4 @@ void LeikkausAudioProcessorEditor::paint(juce::Graphics &g)
   {
     g.drawImage(backgroundImage, getLocalBounds().toFloat());
   }
-
-  // NOTE: Temporary UI code
-  juce::Image linesImage = juce::ImageCache::getFromMemory(BinaryData::Lines_png, BinaryData::Lines_pngSize);
-  if (!linesImage.isNull())
-  {
-    g.drawImage(linesImage, getLocalBounds().toFloat());
-  }
-
-  juce::Image menuImage = juce::ImageCache::getFromMemory(BinaryData::Menu_Overlay_png, BinaryData::Menu_Overlay_pngSize);
-  if (!menuImage.isNull())
-  {
-    g.drawImage(menuImage, getLocalBounds().toFloat());
-  }
 }
