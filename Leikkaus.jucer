@@ -43,6 +43,12 @@
           <FILE id="vAwuim" name="UIComponent.h" compile="0" resource="0" file="Source/Keisari-Modules/UI-Components/UIComponent.h"/>
         </GROUP>
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
+          <GROUP id="{AC8696EA-F440-CDD8-28B2-277F517E8EEA}" name="CeilingVisualiser">
+            <FILE id="kHLcoP" name="CeilingVisualiser.cpp" compile="1" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/CeilingVisualiser/CeilingVisualiser.cpp"/>
+            <FILE id="NVXMrc" name="CeilingVisualiser.h" compile="0" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/CeilingVisualiser/CeilingVisualiser.h"/>
+          </GROUP>
           <GROUP id="{7CABDE54-DD49-6B11-12F6-0F19BA4DFE77}" name="ImageToggle">
             <FILE id="oEn8bT" name="ImageToggle.cpp" compile="1" resource="0" file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.cpp"/>
             <FILE id="Pyn0Ny" name="ImageToggle.h" compile="0" resource="0" file="Source/Keisari-Modules/LookAndFeel/ImageToggle/ImageToggle.h"/>

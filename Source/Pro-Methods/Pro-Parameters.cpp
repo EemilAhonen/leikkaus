@@ -75,7 +75,11 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
     {
         // Set the target value for the ceiling with smoothing, using the decibels-to-gain conversion
         // on the raw parameter value retrieved from the AudioProcessorValueTreeState.
-        _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(static_cast<float>(*_treeState.getRawParameterValue(ceilingID))));
+        float ceilingRawValue = *_treeState.getRawParameterValue(ceilingID);
+        _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(ceilingRawValue));
+
+        // Update the ceiling visualiser with the raw parameter value
+        _ceilingVisualiser.setCeiling(ceilingRawValue);
     }
     else if (parameterId == kneeID)
     {
@@ -110,6 +114,11 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
         _inputValue.setTargetValue(juce::Decibels::decibelsToGain(static_cast<float>(*_treeState.getRawParameterValue(inputID))));
         _outputValue.setTargetValue(juce::Decibels::decibelsToGain(static_cast<float>(*_treeState.getRawParameterValue(outputID))));
         _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(static_cast<float>(*_treeState.getRawParameterValue(ceilingID))));
+
+        float ceilingRawValue = *_treeState.getRawParameterValue(ceilingID);
+        _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(ceilingRawValue));
+        _ceilingVisualiser.setCeiling(ceilingRawValue);
+
         _kneeValue.setTargetValue(*_treeState.getRawParameterValue(kneeID) / 100.0f);
         _mixValue.setTargetValue(*_treeState.getRawParameterValue(mixID) / 100.0f);
         _compensationValue = *_treeState.getRawParameterValue(compensationID);
