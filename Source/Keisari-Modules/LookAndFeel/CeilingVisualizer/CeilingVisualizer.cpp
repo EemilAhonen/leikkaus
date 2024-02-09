@@ -8,11 +8,11 @@
   ==============================================================================
 */
 
-#include "CeilingVisualiser.h"
+#include "CeilingVisualizer.h"
 
 //==============================================================================
 
-void CeilingVisualiser::paint(juce::Graphics &g)
+void CeilingVisualizer::paint(juce::Graphics &g)
 {
   // Get the height of the component
   float height = static_cast<float>(getHeight());

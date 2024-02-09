@@ -31,7 +31,7 @@ void LeikkausAudioProcessorEditor::uiConstructor()
   }
 
   // Create ceiling/knee visualizer
-  addAndMakeVisible(audioProcessor._ceilingVisualiser);
+  addAndMakeVisible(audioProcessor._ceilingVisualizer);
 
   // Create menu image component
   juce::Image menuImage = juce::ImageCache::getFromMemory(BinaryData::Menu_png, BinaryData::Menu_pngSize);

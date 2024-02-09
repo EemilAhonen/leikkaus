@@ -14,10 +14,10 @@
 
 //==============================================================================
 
-class CeilingVisualiser : public juce::Component
+class CeilingVisualizer : public juce::Component
 {
 public:
-  CeilingVisualiser()
+  CeilingVisualizer()
   {
   }
 
@@ -32,5 +32,5 @@ public:
 private:
   float _ceiling = 0.0f;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CeilingVisualiser)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CeilingVisualizer)
 };

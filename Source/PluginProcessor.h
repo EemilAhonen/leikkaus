@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 #include "Globals/Parameters.h"
-#include "Keisari-Modules/LookAndFeel/CeilingVisualiser/CeilingVisualiser.h"
+#include "Keisari-Modules/LookAndFeel/CeilingVisualizer/CeilingVisualizer.h"
 
 //==============================================================================
 
@@ -75,7 +75,7 @@ public:
     void clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer);
 
     //== Visualizers ===============================================================
-    CeilingVisualiser _ceilingVisualiser;
+    CeilingVisualizer _ceilingVisualizer;
 
 private:
     //== Parameters ================================================================

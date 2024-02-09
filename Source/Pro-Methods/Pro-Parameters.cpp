@@ -79,7 +79,7 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
         _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(ceilingRawValue));
 
         // Update the ceiling visualiser with the raw parameter value
-        _ceilingVisualiser.setCeiling(ceilingRawValue);
+        _ceilingVisualizer.setCeiling(ceilingRawValue);
     }
     else if (parameterId == kneeID)
     {
@@ -117,7 +117,7 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
 
         float ceilingRawValue = *_treeState.getRawParameterValue(ceilingID);
         _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(ceilingRawValue));
-        _ceilingVisualiser.setCeiling(ceilingRawValue);
+        _ceilingVisualizer.setCeiling(ceilingRawValue);
 
         _kneeValue.setTargetValue(*_treeState.getRawParameterValue(kneeID) / 100.0f);
         _mixValue.setTargetValue(*_treeState.getRawParameterValue(mixID) / 100.0f);

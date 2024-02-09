@@ -34,7 +34,7 @@ void LeikkausAudioProcessorEditor::resized()
   _overlayImageComponent.setBounds(0, 332.0f * scaleFactor, getWidth(), 1534.0f * scaleFactor);
 
   // Knee
-  audioProcessor._ceilingVisualiser.setBounds(0, topPadding, getWidth(), getHeight() - topPadding);
+  audioProcessor._ceilingVisualizer.setBounds(0, topPadding, getWidth(), getHeight() - topPadding);
 
   // Menu
   _menuImageComponent.setBounds(86.0f * scaleFactor, 1189.0f * scaleFactor, 2829.0f * scaleFactor, 776.0f * scaleFactor);
