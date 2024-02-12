@@ -73,6 +73,7 @@ public:
     //== Processing ================================================================
     void processBlock(juce::AudioBuffer<float> &, juce::MidiBuffer &) override;
     void clearUnusedOutputChannels(juce::AudioBuffer<float> &buffer);
+    void processClipping(juce::dsp::AudioBlock<float> &block);
 
     //== Visualizers ===============================================================
     CeilingVisualizer _ceilingVisualizer;
@@ -85,6 +86,9 @@ private:
     void addParameterListeners();
 
     //== Modules ===================================================================
+    juce::dsp::Gain<float> _inputModule;
+    juce::dsp::Gain<float> _outputModule;
+    juce::dsp::DryWetMixer<float> _dryWetMixerModule;
     juce::dsp::Oversampling<float> _oversamplingModule{2, 2, juce::dsp::Oversampling<float>::filterHalfBandPolyphaseIIR};
 
     //== Parameters ================================================================
@@ -95,11 +99,11 @@ private:
     const double _smoothingParameter = 0.2;
 
     // Values for user modifiable parameters
-    juce::SmoothedValue<float> _inputValue;   //-24db to 24db normalized to gain
-    juce::SmoothedValue<float> _outputValue;  //-24db to 24db normalized to gain
+    float _inputValue;                        //-24db to 24db
+    float _outputValue;                       //-24db to 24db
+    float _mixValue;                          // 0 to 100% normalized to 0 to 1
     juce::SmoothedValue<float> _ceilingValue; // 0 to -24d normalized to gain
     juce::SmoothedValue<float> _kneeValue;    // 0 to 100% normalized to 0 to 1
-    juce::SmoothedValue<float> _mixValue;     // 0 to 100% normalized to 0 to 1
     bool _compensationValue = false;
     bool _oversamplingValue = false;
     bool _deltaValue = false;

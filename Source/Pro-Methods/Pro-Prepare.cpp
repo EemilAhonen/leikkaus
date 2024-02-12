@@ -32,12 +32,23 @@ void LeikkausAudioProcessor::prepareToPlay(double sampleRate, int maximumExpecte
   // Store the sample rate for later use
   _lastSampleRate = sampleRate;
 
+  // Setup audio processing specifications
+  juce::dsp::ProcessSpec spec;
+  spec.sampleRate = sampleRate;
+  spec.maximumBlockSize = maximumExpectedSamplesPerBlock;
+  spec.numChannels = getTotalNumInputChannels();
+
   // Reset and set the ramp duration for transitioning audio processing parameters
-  _inputValue.reset(_lastSampleRate, _smoothingParameter);
-  _outputValue.reset(_lastSampleRate, _smoothingParameter);
   _ceilingValue.reset(_lastSampleRate, _smoothingParameter);
   _kneeValue.reset(_lastSampleRate, _smoothingParameter);
-  _mixValue.reset(_lastSampleRate, _smoothingParameter);
+
+  // Prepare the audio processing blocks
+  _inputModule.prepare(spec);
+  _outputModule.prepare(spec);
+  _dryWetMixerModule.prepare(spec);
+
+  _inputModule.setRampDurationSeconds(_smoothingParameter * 0.05);
+  _outputModule.setRampDurationSeconds(_smoothingParameter * 0.05);
 
   // Reset and initialize oversampling module processing with the given samples per block
   _oversamplingModule.reset();
