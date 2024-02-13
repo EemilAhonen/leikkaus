@@ -162,10 +162,10 @@ void WaveformVisualizer::timerCallback()
     repaint();
 }
 
-void WaveformVisualizer::setColours(juce::Colour bk, juce::Colour fg) noexcept
+void WaveformVisualizer::setColours(juce::Colour waveformColour, juce::Colour clippedColour) noexcept
 {
-    backgroundColour = bk;
-    waveformColour = fg;
+    _waveformColour = waveformColour;
+    _clippedColour = clippedColour;
     repaint();
 }
 
@@ -180,49 +180,27 @@ void WaveformVisualizer::paint(juce::Graphics &g)
 void WaveformVisualizer::getChannelAsPath(juce::Path &path, const juce::Range<float> *levels,
                                           int numLevels, int nextSample)
 {
-    path.preallocateSpace(4 * numLevels + 8);
+    const float defaultLevel = -33.0f;
+    const int spaceMultiplier = 4;
+    const int pathPreallocation = 8;
+
+    path.preallocateSpace(spaceMultiplier * numLevels + pathPreallocation);
 
     for (int i = 0; i < numLevels; ++i)
     {
         auto level = -(levels[(nextSample + i) % numLevels].getEnd());
 
         if (i == 0)
-            path.startNewSubPath(0.0f, -33.0f);
+            path.startNewSubPath(0.0f, defaultLevel);
         else
-            path.lineTo((float)i, -33.0f);
+            path.lineTo((float)i, defaultLevel);
     }
 
     for (int i = numLevels; --i >= 0;)
     {
         float absoluteValue = juce::Decibels::gainToDecibels(std::abs(levels[(nextSample + i) % numLevels].getStart()));
-        if (absoluteValue < -33.0f)
-            absoluteValue = -33.0f;
-        path.lineTo((float)i, absoluteValue);
-    }
-
-    path.closeSubPath();
-}
-
-void WaveformVisualizer::getChannelAsPathClipped(juce::Path &path, const juce::Range<float> *levels,
-                                                 int numLevels, int nextSample)
-{
-    path.preallocateSpace(4 * numLevels + 8);
-
-    for (int i = 0; i < numLevels; ++i)
-    {
-        auto level = -(levels[(nextSample + i) % numLevels].getEnd());
-
-        if (i == 0)
-            path.startNewSubPath(0.0f, -33.0f);
-        else
-            path.lineTo((float)i, -33.0f);
-    }
-
-    for (int i = numLevels; --i >= 0;)
-    {
-        float absoluteValue = juce::Decibels::gainToDecibels(std::abs(levels[(nextSample + i) % numLevels].getStart()));
-        if (absoluteValue < -33.0f)
-            absoluteValue = -33.0f;
+        if (absoluteValue < defaultLevel)
+            absoluteValue = defaultLevel;
         path.lineTo((float)i, absoluteValue);
     }
 
@@ -236,21 +214,26 @@ void WaveformVisualizer::paintChannel(juce::Graphics &g, juce::Rectangle<float> 
     getChannelAsPath(p, levels, numLevels, nextSample);
     p = p.createPathWithRoundedCorners(1.0f);
 
-    g.setColour(waveformColour);
+    g.setColour(_waveformColour);
 
     // Define ceiling min and max Y-coordinates
     float ceilingZero = 150.0f / 1800.0f * area.getHeight();
     float ceilingNeg24 = 0.75f * area.getHeight();
 
+    // Transform the path from -33.0f to sample roof to local area
     p.applyTransform(juce::AffineTransform::fromTargetPoints(0.0f, 0.0f, area.getX(), area.getY() - ceilingZero,
                                                              0.0f, -33.0f, area.getX(), area.getBottom(),
                                                              (float)numLevels, 0.0f, area.getRight(), area.getY() - ceilingZero));
 
     g.fillPath(p);
 
+    // Scale the ceiling to local area
     float scaledY = juce::jmap(_ceiling, -24.0f, 0.0f, ceilingNeg24, ceilingZero);
 
+    // Use the drawn waveform as a clipping mask
     g.reduceClipRegion(p);
-    g.setColour(juce::Colours::red);
+
+    // Set colour and draw the rectangle that is above the ceiling
+    g.setColour(_clippedColour);
     g.fillRect(0, (int)(area.getY()), (int)area.getWidth(), (int)(scaledY));
 }

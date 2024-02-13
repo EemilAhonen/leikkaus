@@ -116,6 +116,11 @@ void LeikkausAudioProcessorEditor::handleRightClick(juce::String parameterID)
             auto contextMenu = hostContext->getContextMenuForParameter(parameter);
             if (contextMenu != nullptr)
             {
+                // This is a hack to make the context menu appear in the right place on MAC
+                // TODO: Fix the HiDPI JUCE bug that is causing this
+                // contextMenu->showNativeMenu(getMouseXYRelative() * 2);
+
+                // So this only works properly on Windows
                 contextMenu->showNativeMenu(getMouseXYRelative());
             }
         }

@@ -19,7 +19,8 @@ void LeikkausAudioProcessorEditor::uiConstructor()
 
   // Create waveform visualizer
   addAndMakeVisible(audioProcessor._waveformVisualizer);
-  audioProcessor._waveformVisualizer.setColours(juce::Colours::black, juce::Colour(80, 90, 100));
+  // Set waveform and clipped area colours
+  audioProcessor._waveformVisualizer.setColours(juce::Colour(80, 90, 100), juce::Colours::red);
 
   // Create overlay image component
   juce::Image overlayImage = juce::ImageCache::getFromMemory(BinaryData::Lines_png, BinaryData::Lines_pngSize);
@@ -57,6 +58,7 @@ void LeikkausAudioProcessorEditor::uiConstructor()
 
 void LeikkausAudioProcessorEditor::createUIComponent(std::unique_ptr<UIComponent> &uiComponent)
 {
+  // Check the type of received UIComponent and create it accordingly
   if (auto sliderComponent = dynamic_cast<SliderComponent *>(uiComponent.get()))
   {
     createSlider(*sliderComponent);

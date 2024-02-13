@@ -79,7 +79,7 @@ public:
     void pushSample(const float *samplesForEachChannel, int numChannels);
 
     /** Sets the colours used to paint the */
-    void setColours(juce::Colour backgroundColour, juce::Colour waveformColour) noexcept;
+    void setColours(juce::Colour waveformColour, juce::Colour clippedColour) noexcept;
 
     /** Sets the frequency at which the component repaints itself. */
     void setRepaintRate(int frequencyInHz);
@@ -97,8 +97,6 @@ public:
     */
     void getChannelAsPath(juce::Path &result, const juce::Range<float> *levels, int numLevels, int nextSample);
 
-    void getChannelAsPathClipped(juce::Path &result, const juce::Range<float> *levels, int numLevels, int nextSample);
-
     void setCeiling(float ceiling)
     {
         _ceiling = ceiling;
@@ -109,11 +107,11 @@ protected:
 
 private:
     float _ceiling = 1.0f;
-    struct ChannelInfo;
+    juce::Colour _waveformColour, _clippedColour;
 
+    struct ChannelInfo;
     juce::OwnedArray<ChannelInfo> channels;
     int numSamples, inputSamplesPerBlock;
-    juce::Colour backgroundColour, waveformColour;
 
     void timerCallback() override;
 
