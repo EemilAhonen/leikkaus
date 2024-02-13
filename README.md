@@ -4,9 +4,9 @@ A dynamic clipper effect plugin.
 <br>
 Leikkaus is compatible with both Windows and MacOS (Intel/Apple Silicon). Available as a VST3 and AU plugin.
 
-## User Interface (Work in progress)
+## User Interface
 
-![User Interface](Docs/UI_Progression.png)
+![User Interface](Docs/User_Interface.jpg)
 
 ## Download
 
