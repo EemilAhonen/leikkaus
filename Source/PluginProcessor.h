@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "Globals/Parameters.h"
 #include "Keisari-Modules/LookAndFeel/CeilingVisualizer/CeilingVisualizer.h"
+#include "Keisari-Modules/LookAndFeel/WaveformVisualizer/WaveformVisualizer.h"
 
 //==============================================================================
 
@@ -77,6 +78,7 @@ public:
 
     //== Visualizers ===============================================================
     CeilingVisualizer _ceilingVisualizer;
+    WaveformVisualizer _waveformVisualizer;
 
 private:
     //== Parameters ================================================================

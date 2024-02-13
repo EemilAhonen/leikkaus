@@ -43,6 +43,12 @@
           <FILE id="vAwuim" name="UIComponent.h" compile="0" resource="0" file="Source/Keisari-Modules/UI-Components/UIComponent.h"/>
         </GROUP>
         <GROUP id="{5D88A681-D9F7-FC19-1EDD-8CFD2A30D8A7}" name="LookAndFeel">
+          <GROUP id="{E30B0286-713B-37F0-7D11-CE8EFC5D77E6}" name="WaveformVisualizer">
+            <FILE id="TXZo2D" name="WaveformVisualizer.cpp" compile="1" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/WaveformVisualizer/WaveformVisualizer.cpp"/>
+            <FILE id="D0kYZc" name="WaveformVisualizer.h" compile="0" resource="0"
+                  file="Source/Keisari-Modules/LookAndFeel/WaveformVisualizer/WaveformVisualizer.h"/>
+          </GROUP>
           <GROUP id="{AC8696EA-F440-CDD8-28B2-277F517E8EEA}" name="CeilingVisualizer">
             <FILE id="prBbtA" name="CeilingVisualizer.cpp" compile="1" resource="0"
                   file="Source/Keisari-Modules/LookAndFeel/CeilingVisualizer/CeilingVisualizer.cpp"/>

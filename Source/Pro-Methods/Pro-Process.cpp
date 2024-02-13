@@ -60,6 +60,9 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
   _inputModule.setGainDecibels(_inputValue);
   _inputModule.process(juce::dsp::ProcessContextReplacing<float>(block));
 
+  // Add buffer to the waveform visualizer component
+  _waveformVisualizer.pushBuffer(buffer);
+
   // Process clipping with oversampling if enabled
   if (_oversamplingValue)
   {
@@ -77,8 +80,6 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
     // Apply clipping processing to each sample
     processClipping(block);
   }
-
-  // TODO: VISUALIZER HERE
 
   // Add output volume to block
   // Apply input compensation if enabled

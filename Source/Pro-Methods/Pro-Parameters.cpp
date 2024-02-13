@@ -69,6 +69,7 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
   float ceilingRawValue = *_treeState.getRawParameterValue(ceilingID);
   _ceilingValue.setTargetValue(juce::Decibels::decibelsToGain(ceilingRawValue));
   _ceilingVisualizer.setCeiling(ceilingRawValue);
+  _waveformVisualizer.setCeiling(ceilingRawValue);
 
   // Set the target value for the knee with smoothing,
   // scaling the raw parameter value (0-100) to the range 0-1.

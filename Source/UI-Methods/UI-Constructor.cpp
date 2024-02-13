@@ -17,10 +17,9 @@ void LeikkausAudioProcessorEditor::uiConstructor()
   // Set font for this editor
   juce::LookAndFeel::getDefaultLookAndFeel().setDefaultSansSerifTypeface(juce::Typeface::createSystemTypefaceFor(BinaryData::RobotoRegular_ttf, BinaryData::RobotoRegular_ttfSize));
 
-  // TODO: FINISH THIS
   // Create waveform visualizer
-  // addAndMakeVisible(audioProcessor.audioVisualiser);
-  // audioProcessor.audioVisualiser.setColours(juce::Colours::black, juce::Colour(30, 35, 40));
+  addAndMakeVisible(audioProcessor._waveformVisualizer);
+  audioProcessor._waveformVisualizer.setColours(juce::Colours::black, juce::Colour(80, 90, 100));
 
   // Create overlay image component
   juce::Image overlayImage = juce::ImageCache::getFromMemory(BinaryData::Lines_png, BinaryData::Lines_pngSize);

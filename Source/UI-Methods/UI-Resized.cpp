@@ -19,16 +19,11 @@ void LeikkausAudioProcessorEditor::resized()
 
   float scaleFactor = getWidth() / windowSizeForCoordinates;
 
-  // Scale UI components
-  for (auto &uiComponentPtr : audioProcessor._parameters.getUIComponents())
-  {
-    UIComponent &uiComponent = *uiComponentPtr;
-    uiComponent.setBounds(scaleFactor);
-  }
+  // Constant for top padding
+  const float topPadding = 200.0f * scaleFactor;
 
-  // Waveform
-  float topPadding = 200.0f * scaleFactor;
-  // audioProcessor.audioVisualiser.setBounds(0, topPadding, getWidth(), getHeight() - topPadding);
+  // Waveform visualizer
+  audioProcessor._waveformVisualizer.setBounds(0, topPadding, getWidth(), getHeight() - topPadding);
 
   // Overlay
   _overlayImageComponent.setBounds(0, 332.0f * scaleFactor, getWidth(), 1534.0f * scaleFactor);
@@ -38,6 +33,13 @@ void LeikkausAudioProcessorEditor::resized()
 
   // Menu
   _menuImageComponent.setBounds(86.0f * scaleFactor, 1189.0f * scaleFactor, 2829.0f * scaleFactor, 776.0f * scaleFactor);
+
+  // Scale UI components
+  for (auto &uiComponentPtr : audioProcessor._parameters.getUIComponents())
+  {
+    UIComponent &uiComponent = *uiComponentPtr;
+    uiComponent.setBounds(scaleFactor);
+  }
 
   // Save the set bound to the treestate
   savePluginBounds();

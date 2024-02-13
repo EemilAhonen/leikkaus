@@ -21,9 +21,12 @@ LeikkausAudioProcessor::LeikkausAudioProcessor()
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
                          ),
-      _treeState(*this, nullptr, "PARAMETERS", createParameterLayout())
+      _treeState(*this, nullptr, "PARAMETERS", createParameterLayout()),
+      _waveformVisualizer(2)
 #endif
 {
+    _waveformVisualizer.setRepaintRate(30);
+    _waveformVisualizer.setBufferSize(512);
     addParameterListeners();
 }
 
@@ -138,7 +141,7 @@ juce::AudioProcessorEditor *LeikkausAudioProcessor::createEditor()
 {
     return new LeikkausAudioProcessorEditor(*this);
     // Generic UI for debugging
-    //return new juce::GenericAudioProcessorEditor(*this);
+    // return new juce::GenericAudioProcessorEditor(*this);
 }
 
 //==============================================================================
