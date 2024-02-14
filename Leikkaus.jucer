@@ -12,7 +12,9 @@
         <FILE id="yidBMJ" name="Roboto-Regular.ttf" compile="0" resource="1"
               file="Assets/Fonts/Roboto-Regular.ttf"/>
       </GROUP>
-      <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons"/>
+      <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons">
+        <FILE id="oUUWnX" name="Icon.png" compile="0" resource="1" file="Assets/Icons/Icon.png"/>
+      </GROUP>
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
         <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
         <FILE id="EPIE4O" name="Compensation_OFF.png" compile="0" resource="1"
@@ -125,7 +127,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="oUUWnX">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="Leikkaus"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Leikkaus"/>

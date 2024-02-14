@@ -10,7 +10,7 @@ Leikkaus is compatible with both Windows and MacOS (Intel/Apple Silicon). Availa
 
 ## Download
 
-Coming soon...
+To download the latest release, visit the [official website](https://eemilahonen.github.io/plugins/leikkaus).
 
 ## Credits
 

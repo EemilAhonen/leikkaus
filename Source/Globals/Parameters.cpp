@@ -23,7 +23,7 @@ void Parameters::addSliderParameter(const juce::String id, const juce::String na
   _uiComponents.push_back(std::make_unique<SliderComponent>(id, name, toolTip, minValue, maxValue, initValue, interval, x + JUCE_SCALING_ERROR, y + JUCE_SCALING_ERROR, width, height, lookAndFeelID));
   _audioParameters.push_back(std::make_unique<juce::AudioParameterFloat>(
       juce::ParameterID{id, 1},
-      inputName,
+      name,
       juce::NormalisableRange<float>(minValue, maxValue, interval),
       initValue,
       juce::String(),
