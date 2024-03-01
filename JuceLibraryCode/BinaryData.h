@@ -12,10 +12,10 @@ namespace BinaryData
     const int            RobotoRegular_ttfSize = 168260;
 
     extern const char*   Icon_png;
-    const int            Icon_pngSize = 505491;
+    const int            Icon_pngSize = 745589;
 
     extern const char*   Background_png;
-    const int            Background_pngSize = 38407;
+    const int            Background_pngSize = 43053;
 
     extern const char*   Compensation_OFF_png;
     const int            Compensation_OFF_pngSize = 10538;

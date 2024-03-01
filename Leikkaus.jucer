@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="hzny89" name="Leikkaus" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="KeisariDSP"
-              companyCopyright="KeisariDSP" companyWebsite="https://eemilahonen.github.io"
-              companyEmail="keisaridsp@gmail.com" pluginDesc="Leikkaus is a dynamic clipper effect plugin"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="KeisariStudios"
+              companyCopyright="KeisariStudios" companyWebsite="https://keisaristudios.com"
+              companyEmail="keisaristudios@gmail.com" pluginDesc="Leikkaus is a dynamic clipper effect plugin"
               pluginManufacturerCode="Keis" pluginCode="Klks" pluginVST3Category="Distortion"
-              pluginAAXCategory="8192" lv2Uri="https://eemilahonen.github.io/plugins/leikkaus">
+              pluginAAXCategory="1,8192" lv2Uri="https://keisaristudios.com/plugins/leikkaus">
   <MAINGROUP id="jCxjP9" name="Leikkaus">
     <GROUP id="{B8C33643-72D0-45A4-A722-54DAF9DC358C}" name="Assets">
       <GROUP id="{67914C8C-F586-1824-7F8D-8A3186DDE3FF}" name="Fonts">
@@ -13,10 +13,10 @@
               file="Assets/Fonts/Roboto-Regular.ttf"/>
       </GROUP>
       <GROUP id="{71144A95-57A2-734F-7F20-32A829EF1DAC}" name="Icons">
-        <FILE id="oUUWnX" name="Icon.png" compile="0" resource="1" file="Assets/Icons/Icon.png"/>
+        <FILE id="EZVjcl" name="Icon.png" compile="0" resource="1" file="Assets/Icons/Icon.png"/>
       </GROUP>
       <GROUP id="{8A9104BF-153E-6455-1ABA-16D41DB85259}" name="Images">
-        <FILE id="lzEdFh" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
+        <FILE id="tVnCjV" name="Background.png" compile="0" resource="1" file="Assets/Images/Background.png"/>
         <FILE id="EPIE4O" name="Compensation_OFF.png" compile="0" resource="1"
               file="Assets/Images/Compensation_OFF.png"/>
         <FILE id="M039gg" name="Compensation_ON.png" compile="0" resource="1"
@@ -127,7 +127,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="oUUWnX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="EZVjcl">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="Leikkaus"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="Leikkaus"/>
