@@ -8,6 +8,15 @@ Leikkaus is compatible with both Windows and MacOS (Intel/Apple Silicon). Availa
 
 ![User Interface](Docs/User_Interface.jpg)
 
+## Changelog
+### Version 1.0.2 (In development)
+* Show 'Ratio' parameter changes in the ceiling visualizer
+* Show 'Ratio' changes in the red clipped section
+
+### Version 1.0.1
+* Fix visualizer scaling issues
+* Change 'Knee' parameter name to 'Ratio'
+
 ## Download
 
 To download the latest release, visit the [official website](https://keisaristudios.com/plugins/leikkaus).
