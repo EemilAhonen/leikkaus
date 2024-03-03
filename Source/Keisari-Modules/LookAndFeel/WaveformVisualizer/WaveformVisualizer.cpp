@@ -221,9 +221,9 @@ void WaveformVisualizer::paintChannel(juce::Graphics &g, juce::Rectangle<float> 
     float ceilingNeg24 = 0.75f * area.getHeight();
 
     // Transform the path from -33.0f to sample roof to local area
-    p.applyTransform(juce::AffineTransform::fromTargetPoints(0.0f, 0.0f, area.getX(), area.getY() - ceilingZero,
+    p.applyTransform(juce::AffineTransform::fromTargetPoints(0.0f, 0.0f, area.getX(), area.getY() + ceilingZero,
                                                              0.0f, -33.0f, area.getX(), area.getBottom(),
-                                                             (float)numLevels, 0.0f, area.getRight(), area.getY() - ceilingZero));
+                                                             (float)numLevels, 0.0f, area.getRight(), area.getY() + ceilingZero));
 
     g.fillPath(p);
 
