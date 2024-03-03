@@ -104,7 +104,7 @@ void LeikkausAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce
 /**
  * @brief Process clipping for each sample in the given audio block.
  *
- * This function applies clipping with knee to each sample in each channel of the
+ * This function applies clipping with ratio to each sample in each channel of the
  * provided audio block. Optionally, it adds the negation of the original signal
  * (delta) to the processed sample if enabled.
  *
@@ -124,8 +124,8 @@ void LeikkausAudioProcessor::processClipping(juce::dsp::AudioBlock<float> &block
       // Get original sample
       const float originalSample = channelData[sample];
 
-      // Add clipping with knee
-      float processedSample = clipWithKnee(originalSample, _ceilingValue.getNextValue(), _kneeValue.getNextValue());
+      // Add clipping with ratio
+      float processedSample = clipWithRatio(originalSample, _ceilingValue.getNextValue(), _ratioValue.getNextValue());
 
       // Apply delta if enabled
       // If _deltaValue is true, add the negation of the original signal to the processed sample

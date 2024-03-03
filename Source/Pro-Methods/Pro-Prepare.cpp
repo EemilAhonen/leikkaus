@@ -40,7 +40,7 @@ void LeikkausAudioProcessor::prepareToPlay(double sampleRate, int maximumExpecte
 
   // Reset and set the ramp duration for transitioning audio processing parameters
   _ceilingValue.reset(_lastSampleRate, _smoothingParameter);
-  _kneeValue.reset(_lastSampleRate, _smoothingParameter);
+  _ratioValue.reset(_lastSampleRate, _smoothingParameter);
 
   // Prepare the audio processing blocks
   _inputModule.prepare(spec);

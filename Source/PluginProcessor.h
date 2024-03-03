@@ -105,7 +105,7 @@ private:
     float _outputValue;                       //-24db to 24db
     float _mixValue;                          // 0 to 100% normalized to 0 to 1
     juce::SmoothedValue<float> _ceilingValue; // 0 to -24d normalized to gain
-    juce::SmoothedValue<float> _kneeValue;    // 0 to 100% normalized to 0 to 1
+    juce::SmoothedValue<float> _ratioValue;    // 0 to 100% normalized to 0 to 1
     bool _compensationValue = false;
     bool _oversamplingValue = false;
     bool _deltaValue = false;

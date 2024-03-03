@@ -24,9 +24,9 @@ const juce::String ceilingID = "ceiling";
 const juce::String ceilingName = "Ceiling";
 const juce::String ceilingToolTip = "Adjust the clipping ceiling to control the clipping threshold. Decrease for more distortion, increase for less.";
 
-const juce::String kneeID = "knee";
-const juce::String kneeName = "Knee";
-const juce::String kneeToolTip = "Adjust the knee to control clipping softness. 0% for hard clip, 100% for complete bypass.";
+const juce::String ratioID = "ratio";
+const juce::String ratioName = "Ratio";
+const juce::String ratioToolTip = "Adjust the ratio to control clipping softness. 0% for hard clip (inf:1), 100% for complete bypass (1:1).";
 
 const juce::String mixID = "mix";
 const juce::String mixName = "Mix";

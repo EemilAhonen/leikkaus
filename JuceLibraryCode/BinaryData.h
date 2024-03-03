@@ -33,7 +33,7 @@ namespace BinaryData
     const int            Lines_pngSize = 31267;
 
     extern const char*   Menu_png;
-    const int            Menu_pngSize = 105106;
+    const int            Menu_pngSize = 118310;
 
     extern const char*   Oversampling_OFF_png;
     const int            Oversampling_OFF_pngSize = 10344;

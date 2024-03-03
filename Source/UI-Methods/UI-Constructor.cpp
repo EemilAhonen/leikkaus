@@ -30,7 +30,7 @@ void LeikkausAudioProcessorEditor::uiConstructor()
     _overlayImageComponent.setImage(overlayImage);
   }
 
-  // Create ceiling/knee visualizer
+  // Create ceiling visualizer
   addAndMakeVisible(audioProcessor._ceilingVisualizer);
 
   // Create menu image component

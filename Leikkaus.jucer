@@ -5,7 +5,8 @@
               companyCopyright="KeisariStudios" companyWebsite="https://keisaristudios.com"
               companyEmail="keisaristudios@gmail.com" pluginDesc="Leikkaus is a dynamic clipper effect plugin"
               pluginManufacturerCode="Keis" pluginCode="Klks" pluginVST3Category="Distortion"
-              pluginAAXCategory="1,8192" lv2Uri="https://keisaristudios.com/plugins/leikkaus">
+              pluginAAXCategory="1,8192" lv2Uri="https://keisaristudios.com/plugins/leikkaus"
+              version="1.0.1">
   <MAINGROUP id="jCxjP9" name="Leikkaus">
     <GROUP id="{B8C33643-72D0-45A4-A722-54DAF9DC358C}" name="Assets">
       <GROUP id="{67914C8C-F586-1824-7F8D-8A3186DDE3FF}" name="Fonts">
@@ -24,7 +25,7 @@
         <FILE id="hhcJr9" name="Delta_OFF.png" compile="0" resource="1" file="Assets/Images/Delta_OFF.png"/>
         <FILE id="O8uwI6" name="Delta_ON.png" compile="0" resource="1" file="Assets/Images/Delta_ON.png"/>
         <FILE id="giindK" name="Lines.png" compile="0" resource="1" file="Assets/Images/Lines.png"/>
-        <FILE id="WsGhtc" name="Menu.png" compile="0" resource="1" file="Assets/Images/Menu.png"/>
+        <FILE id="PhKwFG" name="Menu.png" compile="0" resource="1" file="Assets/Images/Menu.png"/>
         <FILE id="wzc4Z0" name="Oversampling_OFF.png" compile="0" resource="1"
               file="Assets/Images/Oversampling_OFF.png"/>
         <FILE id="oZYufE" name="Oversampling_ON.png" compile="0" resource="1"

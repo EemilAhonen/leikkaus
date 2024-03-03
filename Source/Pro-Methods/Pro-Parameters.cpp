@@ -24,7 +24,7 @@ void LeikkausAudioProcessor::addParameterListeners()
   _treeState.addParameterListener(inputID, this);
   _treeState.addParameterListener(outputID, this);
   _treeState.addParameterListener(ceilingID, this);
-  _treeState.addParameterListener(kneeID, this);
+  _treeState.addParameterListener(ratioID, this);
   _treeState.addParameterListener(mixID, this);
   _treeState.addParameterListener(compensationID, this);
   _treeState.addParameterListener(oversamplingID, this);
@@ -71,9 +71,9 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
   _ceilingVisualizer.setCeiling(ceilingRawValue);
   _waveformVisualizer.setCeiling(ceilingRawValue);
 
-  // Set the target value for the knee with smoothing,
+  // Set the target value for the ratio with smoothing,
   // scaling the raw parameter value (0-100) to the range 0-1.
-  _kneeValue.setTargetValue(*_treeState.getRawParameterValue(kneeID) / 100.0f);
+  _ratioValue.setTargetValue(*_treeState.getRawParameterValue(ratioID) / 100.0f);
 
   // Set the target value for the mix with smoothing,
   // scaling the raw parameter value (0-100) to the range 0-1.

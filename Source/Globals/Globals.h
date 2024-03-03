@@ -25,9 +25,9 @@ extern const juce::String ceilingID;
 extern const juce::String ceilingName;
 extern const juce::String ceilingToolTip;
 
-extern const juce::String kneeID;
-extern const juce::String kneeName;
-extern const juce::String kneeToolTip;
+extern const juce::String ratioID;
+extern const juce::String ratioName;
+extern const juce::String ratioToolTip;
 
 extern const juce::String mixID;
 extern const juce::String mixName;

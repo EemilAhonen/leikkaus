@@ -12,4 +12,4 @@
 
 //==============================================================================
 
-float clipWithKnee(const float sample, const float ceiling, const float knee);
+float clipWithRatio(const float sample, const float ceiling, const float ratio);
