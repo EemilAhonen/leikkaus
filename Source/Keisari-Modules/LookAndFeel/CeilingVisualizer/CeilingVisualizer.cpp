@@ -54,7 +54,7 @@ void CeilingVisualizer::paint(juce::Graphics &g)
   float endX = getWidth();
 
   // Draw the visualizer end point
-  path.lineTo(getWidth(), endY);
+  path.lineTo(endX, endY);
 
   g.strokePath(path, juce::PathStrokeType(lineWidth));
 }

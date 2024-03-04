@@ -102,11 +102,17 @@ public:
         _ceiling = ceiling;
     }
 
+    void setRatio(float ratio)
+    {
+        _ratio = ratio;
+    }
+
 protected:
     void paint(juce::Graphics &) override;
 
 private:
     float _ceiling = 1.0f;
+    float _ratio = 1.0f;
     juce::Colour _waveformColour, _clippedColour;
 
     struct ChannelInfo;

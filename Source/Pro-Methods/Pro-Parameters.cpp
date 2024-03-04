@@ -76,6 +76,7 @@ void LeikkausAudioProcessor::parameterChanged(const juce::String &parameterId, f
   float ratioRawValue = *_treeState.getRawParameterValue(ratioID) / 100.0f;
   _ratioValue.setTargetValue(ratioRawValue);
   _ceilingVisualizer.setRatio(ratioRawValue);
+  _waveformVisualizer.setRatio(ratioRawValue);
 
   // Set the target value for the mix with smoothing,
   // scaling the raw parameter value (0-100) to the range 0-1.

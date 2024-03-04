@@ -233,7 +233,24 @@ void WaveformVisualizer::paintChannel(juce::Graphics &g, juce::Rectangle<float> 
     // Use the drawn waveform as a clipping mask
     g.reduceClipRegion(p);
 
+    // Make a rectangle that is above the ceiling
+    juce::Rectangle clippedRectangle = juce::Rectangle<float>(0, area.getY(), area.getWidth(), scaledY);
+
+    if (_ratio > 0.01)
+    {
+        // Create a vertical colour gradient from _clippedColour to a transparent version of _clippedColou
+        juce::ColourGradient clippedGradient = juce::ColourGradient::vertical(_clippedColour, _clippedColour.withAlpha(0.0f), clippedRectangle);
+
+        // Add a new colour stop to the gradient based on the complement of _ratio
+        clippedGradient.addColour(1 - _ratio, _clippedColour.withAlpha(1 - _ratio));
+        g.setGradientFill(clippedGradient);
+    }
+    else
+    {
+        // If the ratio is less than or equal to 0.01, set the graphics context (g) to a solid colour (_clippedColour)
+        g.setColour(_clippedColour);
+    }
+
     // Set colour and draw the rectangle that is above the ceiling
-    g.setColour(_clippedColour);
-    g.fillRect(0, (int)(area.getY()), (int)area.getWidth(), (int)(scaledY));
+    g.fillRect(clippedRectangle);
 }
