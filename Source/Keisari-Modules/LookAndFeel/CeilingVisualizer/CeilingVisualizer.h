@@ -27,10 +27,17 @@ public:
     repaint();
   }
 
+  void setRatio(const float ratio)
+  {
+    _ratio = ratio;
+    repaint();
+  }
+
   void paint(juce::Graphics &g) override;
 
 private:
   float _ceiling = 0.0f;
+  float _ratio = 0.0f;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CeilingVisualizer)
 };
